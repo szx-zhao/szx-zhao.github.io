@@ -4,12 +4,43 @@
   
     
     <entry>
+      <title>第二篇文章</title>
+      <link href="/2023/07/01/2023.07.01/"/>
+      <url>/2023/07/01/2023.07.01/</url>
+      
+        <content type="html"><![CDATA[<p>##这是我的第一篇文章<br>swiper index:3代表权重值，大，权重高</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> new </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 标签1 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第一篇博客</title>
       <link href="/2023/06/30/2023.06.30/"/>
       <url>/2023/06/30/2023.06.30/</url>
       
         <content type="html"><![CDATA[<h2 id="我tm来了"><a href="#我tm来了" class="headerlink" title="我tm来了"></a>我tm来了</h2>]]></content>
       
+      
+      <categories>
+          
+          <category> new </category>
+          
+      </categories>
       
       
     </entry>
