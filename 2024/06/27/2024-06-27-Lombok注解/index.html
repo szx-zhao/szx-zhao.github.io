@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lombok注解 | 机器人之家</title><meta name="author" content="robotszx"><meta name="copyright" content="robotszx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1. Lombok 是什么Lombok 提供了一组注解和工具，用于在编译期自动生成样板代码。这些样板代码通常是一些重复性的、无趣的、但是必需的代码，例如 getter 和 setter 方法、构造函数、equals 和 hashCode 方法等。借助 Lombok，你就不必手动编写这些繁琐的代码，它会在编译时自动帮你生成这些方法，让你的代码文件简洁而整洁。 2. Lombok 的用途简化 Gett">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lombok注解">
+<meta property="og:url" content="https://szx-zhao.github.io/2024/06/27/2024-06-27-Lombok%E6%B3%A8%E8%A7%A3/index.html">
+<meta property="og:site_name" content="机器人之家">
+<meta property="og:description" content="1. Lombok 是什么Lombok 提供了一组注解和工具，用于在编译期自动生成样板代码。这些样板代码通常是一些重复性的、无趣的、但是必需的代码，例如 getter 和 setter 方法、构造函数、equals 和 hashCode 方法等。借助 Lombok，你就不必手动编写这些繁琐的代码，它会在编译时自动帮你生成这些方法，让你的代码文件简洁而整洁。 2. Lombok 的用途简化 Gett">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://szx-zhao.github.io/img/cover/1.png">
+<meta property="article:published_time" content="2024-06-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-26T16:00:00.000Z">
+<meta property="article:author" content="robotszx">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://szx-zhao.github.io/img/cover/1.png"><link rel="shortcut icon" href="/img/favicon/%E6%9C%BA%E5%99%A8%E4%BA%BA.png"><link rel="canonical" href="https://szx-zhao.github.io/2024/06/27/2024-06-27-Lombok%E6%B3%A8%E8%A7%A3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lombok注解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-27 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="机器人之家"><span class="site-name">机器人之家</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lombok注解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-26T16:00:00.000Z" title="发表于 2024-06-27 00:00:00">2024-06-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-26T16:00:00.000Z" title="更新于 2024-06-27 00:00:00">2024-06-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lombok注解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-Lombok-是什么"><a href="#1-Lombok-是什么" class="headerlink" title="1. Lombok 是什么"></a>1. Lombok 是什么</h1><p>Lombok 提供了一组注解和工具，用于在编译期自动生成样板代码。这些样板代码通常是一些重复性的、无趣的、但是必需的代码，例如 <code>getter</code> 和 <code>setter</code> 方法、构造函数、<code>equals</code> 和 <code>hashCode</code> 方法等。借助 Lombok，你就不必手动编写这些繁琐的代码，它会在编译时自动帮你生成这些方法，让你的代码文件简洁而整洁。</p>
+<h1 id="2-Lombok-的用途"><a href="#2-Lombok-的用途" class="headerlink" title="2. Lombok 的用途"></a>2. Lombok 的用途</h1><p><strong>简化 Getter 和 Setter 方法：</strong> 在传统的 Java 开发中，你经常需要为每个类的属性手动编写 Getter 和 Setter 方法，但是有了 Lombok，你只需要在属性上加上 <code>@Getter</code> 和 <code>@Setter</code> 注解，Lombok 就会为你自动生成这些方法。</p>
+<p><strong>自动生成构造函数：</strong> 通过 <code>@NoArgsConstructor</code>、<code>@RequiredArgsConstructor</code> 或 <code>@AllArgsConstructor</code> 注解，你可以快速生成无参构造函数、带有必需参数的构造函数或者带有全部参数的构造函数。</p>
+<p><strong>自动生成 equals 和 hashCode 方法：</strong> 通过 <code>@EqualsAndHashCode</code> 注解，Lombok 会根据类的字段自动生成 <code>equals()</code> 和 <code>hashCode()</code> 方法，让你的类更易于比较和使用在集合中。</p>
+<p><strong>日志记录更轻松：</strong> 使用 <code>@Slf4j</code> 注解，你可以直接在类中使用 <code>log</code> 对象，而无需手动创建日志记录器。</p>
+<p><strong>简化异常抛出：</strong> 通过 <code>@SneakyThrows</code> 注解，你可以在方法中抛出受检异常，而无需显式地在方法上声明或捕获它们。</p>
+<p><strong>数据类简化：</strong> 使用 <code>@Data</code> 注解，Lombok 会为你自动生成所有常用方法，如 Getter、Setter、<code>toString()</code> 等，让你的数据类更加简洁。</p>
+<p><strong>链式调用：</strong> 使用 <code>@Builder</code> 注解，Lombok 可以帮你创建一个更优雅的构建器模式，让你的对象初始化更加流畅。</p>
+<h1 id="3-如何使用-Lombok"><a href="#3-如何使用-Lombok" class="headerlink" title="3. 如何使用 Lombok"></a>3. 如何使用 Lombok</h1><ul>
+<li>在你的 Java 项目中添加 Lombok 依赖</li>
+<li>在 IDE 中安装好Lombok插件，<code>lombok</code>, 搜索该插件并安装</li>
+<li>idea开启 <code>settings—&gt;build—&gt;compiler—&gt;annotation—&gt;勾选enable annotation processing</code></li>
+<li>在类或字段上添加相应的注解即可</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.20<span class="tag">&lt;/<span class="name">version</span>&gt;</span> <span class="comment">&lt;!-- 注意查看最新的 Lombok 版本，并替换此处的版本号 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="4-Lombok注解"><a href="#4-Lombok注解" class="headerlink" title="4. Lombok注解"></a>4. Lombok注解</h1><h2 id="4-1-Getter-Setter-注解"><a href="#4-1-Getter-Setter-注解" class="headerlink" title="4.1. @Getter @Setter 注解"></a>4.1. @Getter @Setter 注解</h2><p><code>@Getter</code> 和 <code>@Setter</code> 是 Lombok 提供的两个注解，它们可以帮助我们自动在 Java 类中生成 <code>getter</code> 和 <code>setter</code> 方法</p>
+<p>当然，如果你只想为某个特定的字段生成 <code>getter</code> 或者 <code>setter</code> 方法，那么你可以直接将注解加到字段上</p>
+<h2 id="4-2-Constructor-注解"><a href="#4-2-Constructor-注解" class="headerlink" title="4.2. @Constructor 注解"></a>4.2. @Constructor 注解</h2><p>Lombok 的三个构造器注解：<code>@NoArgsConstructor</code>, <code>@RequiredArgsConstructor</code> 和 <code>@AllArgsConstructor</code>，这三个注解可以为你省去编写繁琐的构造方法的麻烦</p>
+<p><code>@NoArgsConstructor</code>：这个注解会让 Lombok 为你的类生成一个无参数的构造方法</p>
+<p><code>@RequiredArgsConstructor</code>：这个注解稍微复杂一些，它会让 Lombok 为你的类生成一个构造方法，构造方法的参数是类中所有需要特殊处理的字段，也就是说，标记为 <code>final</code> 和 <code>@NonNull</code> 的字段会被作为参数</p>
+<p><code>@AllArgsConstructor</code>：这个注解会让 Lombok 为你的类生成一个包含所有字段的构造方法</p>
+<h2 id="4-3-Builder-注解"><a href="#4-3-Builder-注解" class="headerlink" title="4.3. @Builder 注解"></a>4.3. @Builder 注解</h2><p>Builder 设计模式是一种创建型设计模式，主要解决了一些对象的构造过程中的问题。它提供了一种链式方法来创建一个复杂的对象</p>
+<p>Lombok 提供了 <code>@Builder</code> 注解，可以帮助我们简化 builder 模式的实现过程</p>
+<p>例如，考虑一个 User 类，包含 name、age 和 email 这三个字段。如果我们希望通过 Builder 模式创建 User 对象，那么可以这样做</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Builder;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，我们可以通过下面的方式来创建 User 对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> User.builder()</span><br><span class="line">    .name(<span class="string">&quot;Tom&quot;</span>)</span><br><span class="line">    .age(<span class="number">25</span>)</span><br><span class="line">    .email(<span class="string">&quot;tom@example.com&quot;</span>)</span><br><span class="line">    .build();</span><br><span class="line">System.out.println(user);</span><br></pre></td></tr></table></figure>
+<p>这段代码会输出：<code>User(name=Tom, age=25, email=&quot;tom@example.com&quot;</code></p>
+<p>从上面的例子可以看出，Lombok 生成了一个名为 builder 的静态方法，以及 name，age 和 email 的链式设置方法，最后通过 build 方法来构建 User 对象</p>
+<h2 id="4-4-Value-注解"><a href="#4-4-Value-注解" class="headerlink" title="4.4. @Value 注解"></a>4.4. @Value 注解</h2><p><code>@Value</code> 是 Lombok 提供的一个强大的注解，可以帮助我们快速创建不可变类</p>
+<p>使用 <code>@Value</code> 非常简单，只需要在类定义上添加 <code>@Value</code> 注解即可</p>
+<p>自动为所有字段添加 <code>private final</code> 修饰符，使得它们在初始化后就不能再被改变。</p>
+<p>自动生成所有字段的 Getter 方法，因为字段是 <code>final</code> 的，所以没有 Setter 方法。</p>
+<p>自动生成 <code>equals()</code>, <code>hashCode()</code> 和 <code>toString()</code> 方法。</p>
+<p>自动生成一个全参数的构造方法。</p>
+<p>实际上，<code>@Value</code> 就是 <code>@Getter @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE) @AllArgsConstructor @EqualsAndHashCode @ToString</code> 的集合</p>
+<h2 id="4-5-Log-系列注解"><a href="#4-5-Log-系列注解" class="headerlink" title="4.5. @Log 系列注解"></a>4.5. @Log 系列注解</h2><p>Lombok 提供了 <code>@Log</code> 系列注解，用于自动创建并初始化日志记录器。这一系列注解包括：<code>@Log</code>, <code>@Log4j</code>, <code>@Log4j2</code>, <code>@Slf4j</code>, <code>@JBossLog</code> 等，对应于不同的日志框架。每个注解都会在编译时生成一个名为 <code>log</code> 的静态字段，该字段被初始化为对应的日志框架的 Logger 实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 直接使用 log 记录日志</span></span><br><span class="line">        log.info(<span class="string">&quot;This is an information message.&quot;</span>);</span><br><span class="line">        log.error(<span class="string">&quot;This is an error message.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-6-Data-注解"><a href="#4-6-Data-注解" class="headerlink" title="4.6. @Data 注解"></a>4.6. @Data 注解</h2><p><code>@Data</code> 是个万金油注解。一个 <code>@Data</code> 注解相当于同时使用了 <code>@Getter</code> 、<code>@Setter</code> 、<code>@RequiredArgsConstructor</code>、<code>@ToString</code>、<code>@EqualsAndHashCode</code></p>
+<h1 id="5-Lombok-实现原理"><a href="#5-Lombok-实现原理" class="headerlink" title="5. Lombok 实现原理"></a>5. Lombok 实现原理</h1><p>Lombok 实现了一系列自己的注解处理器，每一个处理器都负责处理一种或几种注解</p>
+<p>仅作用于编译阶段：由于 Lombok 是在编译阶段修改语法树，所以它不能处理运行时的注解</p>
+<h1 id="6-避免-Lombok-的常见陷阱"><a href="#6-避免-Lombok-的常见陷阱" class="headerlink" title="6. 避免 Lombok 的常见陷阱"></a>6. 避免 Lombok 的常见陷阱</h1><h2 id="6-1-慎用-Data"><a href="#6-1-慎用-Data" class="headerlink" title="6.1. 慎用 @Data"></a>6.1. 慎用 @Data</h2><p><code>@Data</code> 是一个实用的注解，它包含了 <code>@Getter</code>、<code>@Setter</code>、<code>@ToString</code>、<code>@EqualsAndHashCode</code> 和 <code>@RequiredArgsConstructor</code>。这在一般情况下非常方便，但是当你需要自定义一些方法时，就可能会遇到问题。</p>
+<p>例如，你可能需要自定义 <code>equals</code> 和 <code>hashCode</code> 方法，但是由于 <code>@Data</code> 注解自动生成了这些方法，所以你的自定义方法会被覆盖。</p>
+<h2 id="6-2-不要滥用-Lombok"><a href="#6-2-不要滥用-Lombok" class="headerlink" title="6.2. 不要滥用 Lombok"></a>6.2. 不要滥用 Lombok</h2><p>虽然 Lombok 的注解可以极大地简化我们的代码，但是这并不意味着我们应该在所有地方都使用它。在一些情况下，手动编写代码可能会更好。</p>
+<p>例如，你可能需要自定义某个字段的 getter 或 setter 方法，或者你需要自定义 <code>equals</code>、<code>hashCode</code> 或 <code>toString</code> 方法。在这些情况下，使用 Lombok 的注解可能会导致你的自定义代码被覆盖</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io">robotszx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io/2024/06/27/2024-06-27-Lombok%E6%B3%A8%E8%A7%A3/">https://szx-zhao.github.io/2024/06/27/2024-06-27-Lombok%E6%B3%A8%E8%A7%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://szx-zhao.github.io" target="_blank">机器人之家</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post_share"><div class="social-share" data-image="/img/cover/1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/06/27/2024-06-27-Docker%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" title="Docker最佳实践"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Docker最佳实践</div></div></a></div><div class="next-post pull-right"><a href="/2024/06/27/2024-06-27-SpringBoot%E7%BA%BF%E7%A8%8B%E6%B1%A0/" title="SpringBoot线程池"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SpringBoot线程池</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/06/26/2021-06-26-JDBC/" title="JDBC"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-26</div><div class="title">JDBC</div></div></a></div><div><a href="/2021/07/05/2021-07-05-Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="Java网络编程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-05</div><div class="title">Java网络编程</div></div></a></div><div><a href="/2023/02/09/2023-02-09-%E9%98%BF%E9%87%8CJava%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/" title="阿里Java开发手册"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-09</div><div class="title">阿里Java开发手册</div></div></a></div><div><a href="/2023/02/12/2023-02-12-Java%E4%B8%AD%E7%BA%A7/" title="Java中级"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-12</div><div class="title">Java中级</div></div></a></div><div><a href="/2023/02/12/2023-02-12-Java%E9%AB%98%E7%BA%A7/" title="Java高级"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-12</div><div class="title">Java高级</div></div></a></div><div><a href="/2023/02/12/2023-02-12-Java%E5%88%9D%E7%BA%A7/" title="Java初级"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-12</div><div class="title">Java初级</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">robotszx</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szx-zhao"><i class="fab fa-github"></i><span>前往未知的领域~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/szx-zhao" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1358861771@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Lombok-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">1. Lombok 是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Lombok-%E7%9A%84%E7%94%A8%E9%80%94"><span class="toc-number">2.</span> <span class="toc-text">2. Lombok 的用途</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-Lombok"><span class="toc-number">3.</span> <span class="toc-text">3. 如何使用 Lombok</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Lombok%E6%B3%A8%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">4. Lombok注解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Getter-Setter-%E6%B3%A8%E8%A7%A3"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. @Getter @Setter 注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Constructor-%E6%B3%A8%E8%A7%A3"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. @Constructor 注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-Builder-%E6%B3%A8%E8%A7%A3"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. @Builder 注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-Value-%E6%B3%A8%E8%A7%A3"><span class="toc-number">4.4.</span> <span class="toc-text">4.4. @Value 注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-Log-%E7%B3%BB%E5%88%97%E6%B3%A8%E8%A7%A3"><span class="toc-number">4.5.</span> <span class="toc-text">4.5. @Log 系列注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-Data-%E6%B3%A8%E8%A7%A3"><span class="toc-number">4.6.</span> <span class="toc-text">4.6. @Data 注解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Lombok-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">5. Lombok 实现原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E9%81%BF%E5%85%8D-Lombok-%E7%9A%84%E5%B8%B8%E8%A7%81%E9%99%B7%E9%98%B1"><span class="toc-number">6.</span> <span class="toc-text">6. 避免 Lombok 的常见陷阱</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E6%85%8E%E7%94%A8-Data"><span class="toc-number">6.1.</span> <span class="toc-text">6.1. 慎用 @Data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E4%B8%8D%E8%A6%81%E6%BB%A5%E7%94%A8-Lombok"><span class="toc-number">6.2.</span> <span class="toc-text">6.2. 不要滥用 Lombok</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By robotszx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

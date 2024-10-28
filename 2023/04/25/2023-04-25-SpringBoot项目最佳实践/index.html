@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SpringBoot项目最佳实践 | 机器人之家</title><meta name="author" content="robotszx"><meta name="copyright" content="robotszx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1. Spring Boot通用项目结构在Java 的web开发中，使用了Spring MVC 框架之后，我们的代码组织形式变成了controller，service，dao这种形式 以Spring Boot 构建的项目应该总体分为三大层  项目根目录&#x2F;src&#x2F;main&#x2F;java：放置项目Java源代码 项目根目录&#x2F;src&#x2F;main&#x2F;resources：放置项目静态资源和配置文件 项目根目录&#x2F;sr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot项目最佳实践">
+<meta property="og:url" content="https://szx-zhao.github.io/2023/04/25/2023-04-25-SpringBoot%E9%A1%B9%E7%9B%AE%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="机器人之家">
+<meta property="og:description" content="1. Spring Boot通用项目结构在Java 的web开发中，使用了Spring MVC 框架之后，我们的代码组织形式变成了controller，service，dao这种形式 以Spring Boot 构建的项目应该总体分为三大层  项目根目录&#x2F;src&#x2F;main&#x2F;java：放置项目Java源代码 项目根目录&#x2F;src&#x2F;main&#x2F;resources：放置项目静态资源和配置文件 项目根目录&#x2F;sr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://szx-zhao.github.io/img/cover/3.png">
+<meta property="article:published_time" content="2023-04-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-24T16:00:00.000Z">
+<meta property="article:author" content="robotszx">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://szx-zhao.github.io/img/cover/3.png"><link rel="shortcut icon" href="/img/favicon/%E6%9C%BA%E5%99%A8%E4%BA%BA.png"><link rel="canonical" href="https://szx-zhao.github.io/2023/04/25/2023-04-25-SpringBoot%E9%A1%B9%E7%9B%AE%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SpringBoot项目最佳实践',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-25 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/3.png')"><nav id="nav"><span id="blog-info"><a href="/" title="机器人之家"><span class="site-name">机器人之家</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SpringBoot项目最佳实践</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-24T16:00:00.000Z" title="发表于 2023-04-25 00:00:00">2023-04-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-24T16:00:00.000Z" title="更新于 2023-04-25 00:00:00">2023-04-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SpringBoot项目最佳实践"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-Spring-Boot通用项目结构"><a href="#1-Spring-Boot通用项目结构" class="headerlink" title="1. Spring Boot通用项目结构"></a>1. Spring Boot通用项目结构</h1><p>在Java 的web开发中，使用了Spring MVC 框架之后，我们的代码组织形式变成了controller，service，dao这种形式</p>
+<p>以Spring Boot 构建的项目应该总体分为三大层</p>
+<ul>
+<li><code>项目根目录/src/main/java</code>：放置项目Java源代码</li>
+<li><code>项目根目录/src/main/resources</code>：放置项目静态资源和配置文件</li>
+<li><code>项目根目录/src/test/java</code>：放置项目测试用例代码</li>
+</ul>
+<h2 id="1-1-src-main-java目录下的结构"><a href="#1-1-src-main-java目录下的结构" class="headerlink" title="1.1. /src/main/java目录下的结构"></a>1.1. <code>/src/main/java</code>目录下的结构</h2><p>不同项目和团队实践不一样，稍许有区别，但整体安排应该差不多。如果是<strong>多模块</strong>的项目的话，下面的结构应该只对应其中一个模块，其他模块的代码组织也大致差不多</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">|_annotation：放置项目自定义注解</span><br><span class="line">|_aspect：放置切面代码</span><br><span class="line">|_config：放置配置类</span><br><span class="line">|_constant：放置常量、枚举等定义</span><br><span class="line">   |__consist：存放常量定义</span><br><span class="line">   |__enums：存放枚举定义</span><br><span class="line">|_controller：放置控制器代码</span><br><span class="line">|_filter：放置一些过滤、拦截相关的代码</span><br><span class="line">|_mapper：放置数据访问层代码接口</span><br><span class="line">|_model：放置数据模型代码</span><br><span class="line">   |__entity：放置数据库实体对象定义</span><br><span class="line">   |__dto：存放数据传输对象定义</span><br><span class="line">   |__vo：存放显示层对象定义</span><br><span class="line">|_service：放置具体的业务逻辑代码（接口和实现分离）</span><br><span class="line">   |__intf：存放业务逻辑接口定义</span><br><span class="line">   |__impl：存放业务逻辑实际实现</span><br><span class="line">|_util：放置工具类和辅助代码</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-src-main-resources目录下的结构"><a href="#1-2-src-main-resources目录下的结构" class="headerlink" title="1.2. /src/main/resources目录下的结构"></a>1.2. <code>/src/main/resources</code>目录下的结构</h2><p>主要存放静态配置文件和页面静态资源等东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">|_mapper：存放mybatis的XML映射文件（如果是mybatis项目）</span><br><span class="line">|_static：存放网页静态资源，比如下面的js/css/img</span><br><span class="line">   |__js：</span><br><span class="line">   |__css：</span><br><span class="line">   |__img：</span><br><span class="line">   |__font：</span><br><span class="line">   |__等等</span><br><span class="line">|_template：存放网页模板，比如thymeleaf/freemarker模板等</span><br><span class="line">   |__header</span><br><span class="line">   |__sidebar</span><br><span class="line">   |__bottom</span><br><span class="line">   |__XXX.html等等</span><br><span class="line">|_application.yml       基本配置文件</span><br><span class="line">|_application-dev.yml   开发环境配置文件</span><br><span class="line">|_application-test.yml  测试环境配置文件</span><br><span class="line">|_application-prod.yml  生产环境配置文件</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-控制器（controller）"><a href="#1-3-控制器（controller）" class="headerlink" title="1.3. 控制器（controller）"></a>1.3. 控制器（controller）</h2><p>controller 接收请求，并将请求转发至业务处理对象</p>
+<p>接收业务请求处理结果，并将结果分发到响应页面</p>
+<p>不执行实际的业务逻辑，调用service 接口中的方法去完成</p>
+<p>控制器应该围绕用例、业务能力来设计</p>
+<p><strong>controller层一般返回封装的结果类<code>Result</code></strong></p>
+<p><strong>默认情况下，控制器是单例</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/user&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line">    <span class="comment">// 注入service接口</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line">    <span class="comment">// 查询所有用户信息</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/all&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userService.queryUsers();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-4-业务层（service）"><a href="#1-4-业务层（service）" class="headerlink" title="1.4. 业务层（service）"></a>1.4. 业务层（service）</h2><p>service，用于执行业务逻辑，如计算、验证、授权等</p>
+<p>一般由两部分组成 <strong>一个Java接口和一个实现类</strong></p>
+<p>serviceImpl是实现具体业务逻辑的，通常是把mapper和业务进行整合</p>
+<p><strong>service层返回什么主要看controller层需要什么，一般返回操作的执行结果（成功、失败）、处理后的业务数据（如经过计算、过滤或转换的数据）、异常或错误信息</strong></p>
+<p>最好围绕业务功能、领域、用例来构建服务，合理的使用单一职责原则</p>
+<p>如 <code>AccountService</code>, <code>UserService</code> 这样的服务，比起 <code>DatabaseService</code>、<code>ValidationService</code> 这样的会更合适一些</p>
+<p>定义接口 UserService</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="comment">// 对应于mapper层接口中定义的方法</span></span><br><span class="line">    List &lt;User&gt; queryUsers();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义接口实现类 UserServiceImpl</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">	<span class="comment">// 注入mapper接口</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">queryUsers</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.queryUsers();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-5-DAO层（mapper）"><a href="#1-5-DAO层（mapper）" class="headerlink" title="1.5. DAO层（mapper）"></a>1.5. DAO层（mapper）</h2><p>实现数据层的操作</p>
+<p>dao（Data Access Objects）层也叫mapper层，用于从数据库或其他数据存储介质中读取和写入数据</p>
+<p><strong>先设计mapper接口，然后在xml配置文件中进行配置</strong></p>
+<p>定义接口 UserMapper</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> &#123;</span><br><span class="line">    List&lt;User&gt; <span class="title function_">queryUsers</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在xml中写SQL语句</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span> <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.hy.mapper.UserMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--id表示接口当中定义的方法. resultType,表示数据库查询的结果.--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryUsers&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.hy.entity.User&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.hy.entity.User&quot;</span>&gt;</span></span><br><span class="line">        select * from login</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>mapper层返回什么主要看service层需要什么</strong></p>
+<h2 id="1-6-工具类（utils）"><a href="#1-6-工具类（utils）" class="headerlink" title="1.6. 工具类（utils）"></a>1.6. 工具类（utils）</h2><p>utils，用于提供常用的实用程序方法，如日期格式化、字符串处理、加密解密等</p>
+<h2 id="1-7-配置类（config）"><a href="#1-7-配置类（config）" class="headerlink" title="1.7. 配置类（config）"></a>1.7. 配置类（config）</h2><p>config，拓展功能、修改默认功能</p>
+<h2 id="1-8-拦截器（interceptor）"><a href="#1-8-拦截器（interceptor）" class="headerlink" title="1.8. 拦截器（interceptor）"></a>1.8. 拦截器（interceptor）</h2><p>interceptor</p>
+<h2 id="1-9-数据模型定义（model）"><a href="#1-9-数据模型定义（model）" class="headerlink" title="1.9. 数据模型定义（model）"></a>1.9. 数据模型定义（model）</h2><p>model包中放的都是POJO类，一个POJO类一般实现了JavaBean的标准，要在各个实体类中实现序列化接口，避免在微服务中出现错误</p>
+<p><code>entity</code>是数据库实体对象定义，定义各个属性以及各个属性的getter()和setter()方法，与数据库表结构一一对应</p>
+<p>《阿里巴巴Java开发手册》中定义如下（实际项目开发时，没有必要刻意照搬去定义这么多层对象）</p>
+<p><code>DO（Data Object）</code>：与数据库表结构一一对应，通过DAO层向上传输数据源对象</p>
+<p><code>DTO（Data Transfer Object）</code>：数据传输对象，Service层向外传输的对象</p>
+<p><code>BO（Business Object）</code>：业务对象。由Service层输出的封装业务逻辑的对象</p>
+<p><code>AO（Application Object）</code>：应用对象。在Web层与Service层之间抽象的复用对象模型，极为贴近展示层，复用度不高</p>
+<p><code>VO（View Object）</code>：显示层对象，通常是Web向模板渲染引擎层传输的对象</p>
+<p><code>Query</code>：数据查询对象，各层接收上层的查询请求。注意超过2个参数的查询封装，禁止使用Map类来传输</p>
+<p><strong>实际开发中一般只涉及如下两种数据模型就够用了</strong></p>
+<p><code>DTO/VO</code> 泛指控制层与服务层之间的数据传输对象</p>
+<p><code>DO/Entity</code> 泛指服务层与DAO层间的数据传输对象</p>
+<h2 id="1-10-各层间调用关系"><a href="#1-10-各层间调用关系" class="headerlink" title="1.10. 各层间调用关系"></a>1.10. 各层间调用关系</h2><p><strong>要遵循Controller–&gt;Service接口–&gt;ServiceImpt实现类–&gt;Mapper接口-&gt;SQL-&gt;DataBase的调用模式</strong></p>
+<p><strong>每当我们拿到一个新的项目到手时，只要按照这个思路去看别人项目的代码，应该基本都是能理得顺的</strong>。</p>
+<p>controller调用service接口，serviceimpl实现类调用mapper接口并实现其他业务</p>
+<p>在Service接口有多个ServiceImpl实现类的情况，就需要指定参数名来选择哪个ServiceImpt实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Service层（此时有两个接口实现类）</span><br><span class="line">    <span class="meta">@Service(&quot;PCIImpt1&quot;)</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">PCIImpt1</span> imeplements PCI&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Service(&quot;PCIimpt2&quot;)</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">PCIImpt2</span> imeplements PCI&#123;&#125;</span><br><span class="line"></span><br><span class="line">Controller层</span><br><span class="line">    <span class="meta">@Resource(name=&quot;PCIimpt2&quot;)</span>  <span class="comment">//填PCIimpt1，注入PCIimpt1实现类，填PCIimpt2，则注入PCIimpt2实现类</span></span><br><span class="line">    <span class="keyword">private</span> PCI pci;    <span class="comment">//注入接口以Resource手动指定接收</span></span><br></pre></td></tr></table></figure>
+<p>controller层调用了service层接口中的方法，service层由service对应的接口和实现类组成，serviceImpl实现service的相关接口同时完成相关的业务逻辑处理</p>
+<p>service层的实现类serviceImpl 再调用mapper层的接口，进行业务逻辑应用的处理</p>
+<p>mapper层的接口在对应的xml配置文件中进行配置、实现以及关联，mapper层的任务就是向数据库发送sql语句，完成数据的处理任务</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog0912pic.oss-cn-beijing.aliyuncs.com/blog/202409131106489.png" alt="springmvc各层调用"></p>
+<h2 id="1-11-编写顺序"><a href="#1-11-编写顺序" class="headerlink" title="1.11. 编写顺序"></a>1.11. 编写顺序</h2><p>先设计数据库表，然后定义好model，之后再实现其他部分</p>
+<h1 id="2-Spring-Boot的最佳实践"><a href="#2-Spring-Boot的最佳实践" class="headerlink" title="2. Spring Boot的最佳实践"></a>2. Spring Boot的最佳实践</h1><h2 id="2-1-使用自定义BOM来维护第三方依赖"><a href="#2-1-使用自定义BOM来维护第三方依赖" class="headerlink" title="2.1. 使用自定义BOM来维护第三方依赖"></a>2.1. 使用自定义BOM来维护第三方依赖</h2><p>可以借鉴Spring IO Platform来编写自己的基础项目platform-bom，所有的业务模块项目应该以BOM的方式引入。这样在升级第三方依赖时，就只需要升级这一个依赖的版本而已<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.spring.platform<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>platform-bom<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>Cairo-SR3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在项目中，为了比避免在pom.xml文件中重复导包的问题，可以自己创建一个父工程，将所有的依赖版本统一，避免出现jar包冲突和每个项目都要导包的问题。在创建项目时只需要继承父工程即可。类似于spring boot的父工程</p>
+<h2 id="2-2-使用自动化配置"><a href="#2-2-使用自动化配置" class="headerlink" title="2.2. 使用自动化配置"></a>2.2. 使用自动化配置</h2><p>自动化配置是Spring Boot的一部分，它可以简化你的代码并使之工作。当在类路径上检测到特定的jar文件时，自动配置就会被激活。</p>
+<p>使用它的最简单方法是依赖Spring Boot Starters</p>
+<p>如果想与Redis进行集成</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可为开发中常见的问题，创建自己的自动配置，即<strong>手动实现一个 starter</strong></p>
+<h2 id="2-3-正确设计代码目录结构"><a href="#2-3-正确设计代码目录结构" class="headerlink" title="2.3. 正确设计代码目录结构"></a>2.3. 正确设计代码目录结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">├── main</span><br><span class="line">│   ├── java</span><br><span class="line">│   │   └── com</span><br><span class="line">│   │       └── bestpractice</span><br><span class="line">│   │           ├── config 存放配置类</span><br><span class="line">│   │           ├── constants 放置常量、枚举等定义</span><br><span class="line">│   │           ├── controller 放置控制器代码</span><br><span class="line">│   │           ├── dao 放置数据访问层代码接口</span><br><span class="line">│   │           ├── exception</span><br><span class="line">│   │           ├── filter 放置一些过滤、拦截相关的代码</span><br><span class="line">│   │           ├── manager 放置数据访问层代码接口</span><br><span class="line">│   │           ├── model</span><br><span class="line">│   │           │   ├── entity 放置数据库实体对象定义</span><br><span class="line">│   │           │   ├── dto 存放数据传输对象定义</span><br><span class="line">│   │           │   └── vo 存放显示层对象定义</span><br><span class="line">│   │           ├── service 放置具体的业务逻辑代码（接口和实现分离）</span><br><span class="line">│   │           │   ├── impl 存放业务逻辑实际实现</span><br><span class="line">│   │           ├── task</span><br><span class="line">│   │           ├── utils 放置工具类和辅助代码</span><br><span class="line">│   │           └── BestPracticeApplication.java</span><br><span class="line">│   │</span><br><span class="line">│   └── resources</span><br></pre></td></tr></table></figure>
+<h2 id="2-4-保持Controller层的简洁"><a href="#2-4-保持Controller层的简洁" class="headerlink" title="2.4. 保持Controller层的简洁"></a>2.4. 保持Controller层的简洁</h2><p>了解设计REST API的最佳实践</p>
+<p><code>Controller</code>层里可以做参数校验、异常抛出等操作，但建议不要放太多业务逻辑，业务逻辑尽量放到<code>Service</code>层代码中去做</p>
+<h2 id="2-5-围绕业务功能构建Service"><a href="#2-5-围绕业务功能构建Service" class="headerlink" title="2.5. 围绕业务功能构建Service"></a>2.5. 围绕业务功能构建Service</h2><p><code>Service</code>层做实际业务逻辑，完整的业务逻辑包含验证、缓存等</p>
+<p>功能模块<code>Service</code>之间引用时，建议不要渗透到<code>DAO</code>层（或者<code>mapper</code>层），基于<code>Service</code>层进行调用和复用比较合理</p>
+<p>业务逻辑层<code>Service</code>和数据库<code>DAO</code>层的操作对象不要混用。<code>Controller</code>层的数据对象不要直接渗透到<code>DAO</code>层（或者<code>mapper</code>层）；同理数据表实体对象<code>Entity</code>也不要直接传到<code>Controller</code>层进行输出或展示。</p>
+<h2 id="2-6-使用全局异常处理"><a href="#2-6-使用全局异常处理" class="headerlink" title="2.6. 使用全局异常处理"></a>2.6. 使用全局异常处理</h2><p>Spring Boot提供了两种主要方法：</p>
+<p>使用 <code>HandlerExceptionResolver</code> 定义全局异常处理策略</p>
+<p>在控制器上添加 <code>@ExceptionHandler</code> 注解，这在某些特定场景下使用可能会很有用</p>
+<h2 id="2-7-使用-slf4j-日志"><a href="#2-7-使用-slf4j-日志" class="headerlink" title="2.7. 使用 slf4j 日志"></a>2.7. 使用 slf4j 日志</h2><p>应该使用日志框架进行日志记录，而不是使用<code>System.out.println()</code>手动执行。建议将 Slf4j 与 Spring Boot 中默认的日志框架 logback 一起使用。可以使用 Lombok的 <code>@Slf4j</code> 注释非常轻松地创建日志记录器</p>
+<p>在Spring Boot中完成，几乎没有配置。只需获取该类的记录器实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> LoggerFactory.getLogger(MyClass.class);</span><br></pre></td></tr></table></figure>
+<h2 id="2-8-代码测试"><a href="#2-8-代码测试" class="headerlink" title="2.8. 代码测试"></a>2.8. 代码测试</h2><p>测试切片，你可以根据需要仅连接部分应用程序</p>
+<h2 id="2-9-使用Swagger接口文档工具"><a href="#2-9-使用Swagger接口文档工具" class="headerlink" title="2.9. 使用Swagger接口文档工具"></a>2.9. 使用Swagger接口文档工具</h2><p>在大多数情况下，其他应用程序将通过REST API 调用你的应用程序。因此我们需要维护一份API文档。文档应该由代码生成。</p>
+<h2 id="2-10-使数据库独立于核心业务逻辑之外"><a href="#2-10-使数据库独立于核心业务逻辑之外" class="headerlink" title="2.10. 使数据库独立于核心业务逻辑之外"></a>2.10. 使数据库独立于核心业务逻辑之外</h2><p>理想情况下，你不希望服务知道它正在与哪个数据库通信，这需要一些抽象来封装对象的持久性</p>
+<p><strong>一些优秀的持久层框架可以帮助我们做到这些</strong></p>
+<h2 id="2-11-使用Spring-Initializr来开始一个新的Spring-Boot项目"><a href="#2-11-使用Spring-Initializr来开始一个新的Spring-Boot项目" class="headerlink" title="2.11. 使用Spring Initializr来开始一个新的Spring Boot项目"></a>2.11. 使用Spring Initializr来开始一个新的Spring Boot项目</h2><p>使用Initializr创建应用程序可确保你获得经过测试和验证的依赖项，这些依赖项适用于Spring自动配置。</p>
+<h2 id="2-12-使用-Lombok"><a href="#2-12-使用-Lombok" class="headerlink" title="2.12. 使用 Lombok"></a>2.12. 使用 Lombok</h2><p>Lombok 是一个 Java 库，可用于减少代码并允许我们使用其注释编写干净的代码</p>
+<h2 id="2-13-避免空指针异常"><a href="#2-13-避免空指针异常" class="headerlink" title="2.13. 避免空指针异常"></a>2.13. 避免空指针异常</h2><ul>
+<li>为了避免 NullPointerException，我们可以使用 java.util 包中的 Optional。</li>
+<li>我们还可以使用空安全库。例如：Apache Commons StringUtils</li>
+<li>对已知对象调用 equals() 和 equalsIgnoreCase() 方法。</li>
+<li>使用 valueOf() 而不是 toString()</li>
+<li><p>使用基于 IDE 的 @NotNull 和 @Nullable 注释</p>
+<h2 id="2-14-使用集合框架的最佳实践"><a href="#2-14-使用集合框架的最佳实践" class="headerlink" title="2.14. 使用集合框架的最佳实践"></a>2.14. 使用集合框架的最佳实践</h2></li>
+<li><p>对我们的数据集使用适当的集合。</p>
+</li>
+<li>将 forEach 与 Java 8 功能结合使用，并避免使用旧版 for 循环。</li>
+<li>使用接口类型而不是实现。</li>
+<li>使用 isEmpty() 而不是 size() 以获得更好的可读性。</li>
+<li>不返回空值，可以返回空集合。</li>
+<li>如果我们使用对象作为要存储在基于哈希的集合中的数据，则应重写 equals() 和 hashCode() 方法。<h2 id="2-15-使用分页"><a href="#2-15-使用分页" class="headerlink" title="2.15. 使用分页"></a>2.15. 使用分页</h2></li>
+</ul>
+<p>使用物理分页</p>
+<h2 id="2-16-使用自定义响应对象"><a href="#2-16-使用自定义响应对象" class="headerlink" title="2.16. 使用自定义响应对象"></a>2.16. 使用自定义响应对象</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io">robotszx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io/2023/04/25/2023-04-25-SpringBoot%E9%A1%B9%E7%9B%AE%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">https://szx-zhao.github.io/2023/04/25/2023-04-25-SpringBoot%E9%A1%B9%E7%9B%AE%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://szx-zhao.github.io" target="_blank">机器人之家</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></div><div class="post_share"><div class="social-share" data-image="/img/cover/3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/30/2023-04-30-%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E5%8F%91%E5%B1%95%E5%8F%B2/" title="网站架构发展史"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">网站架构发展史</div></div></a></div><div class="next-post pull-right"><a href="/2023/04/13/2023-04-13-SpringSecurity/" title="SpringSecurity"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SpringSecurity</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/03/03/2023-03-03-SpringBoot/" title="SpringBoot"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/5.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-03</div><div class="title">SpringBoot</div></div></a></div><div><a href="/2023/09/12/2023-09-12-SpringBoot%E5%90%8E%E7%AB%AF%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/" title="SpringBoot后端接口规范"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-12</div><div class="title">SpringBoot后端接口规范</div></div></a></div><div><a href="/2023/09/07/2023-09-07-SpringBoot%E6%97%A5%E5%BF%97%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" title="SpringBoot日志最佳实践"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/5.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-07</div><div class="title">SpringBoot日志最佳实践</div></div></a></div><div><a href="/2023/11/18/2023-11-18-Swagger%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/" title="Swagger接口文档工具"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-18</div><div class="title">Swagger接口文档工具</div></div></a></div><div><a href="/2024/01/10/2024-01-10-SpringBootStarter%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%9E%E7%8E%B0/" title="SpringBootStarter自定义实现"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-10</div><div class="title">SpringBootStarter自定义实现</div></div></a></div><div><a href="/2024/01/10/2024-01-10-SpringBoot%E7%94%9F%E6%80%81/" title="SpringBoot生态"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-10</div><div class="title">SpringBoot生态</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">robotszx</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szx-zhao"><i class="fab fa-github"></i><span>前往未知的领域~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/szx-zhao" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1358861771@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Spring-Boot%E9%80%9A%E7%94%A8%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">1. Spring Boot通用项目结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-src-main-java%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. &#x2F;src&#x2F;main&#x2F;java目录下的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-src-main-resources%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. &#x2F;src&#x2F;main&#x2F;resources目录下的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%88controller%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. 控制器（controller）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E4%B8%9A%E5%8A%A1%E5%B1%82%EF%BC%88service%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">1.4. 业务层（service）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-DAO%E5%B1%82%EF%BC%88mapper%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">1.5. DAO层（mapper）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-%E5%B7%A5%E5%85%B7%E7%B1%BB%EF%BC%88utils%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">1.6. 工具类（utils）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-%E9%85%8D%E7%BD%AE%E7%B1%BB%EF%BC%88config%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">1.7. 配置类（config）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-%E6%8B%A6%E6%88%AA%E5%99%A8%EF%BC%88interceptor%EF%BC%89"><span class="toc-number">1.8.</span> <span class="toc-text">1.8. 拦截器（interceptor）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89%EF%BC%88model%EF%BC%89"><span class="toc-number">1.9.</span> <span class="toc-text">1.9. 数据模型定义（model）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-10-%E5%90%84%E5%B1%82%E9%97%B4%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB"><span class="toc-number">1.10.</span> <span class="toc-text">1.10. 各层间调用关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-11-%E7%BC%96%E5%86%99%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.11.</span> <span class="toc-text">1.11. 编写顺序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Spring-Boot%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">2.</span> <span class="toc-text">2. Spring Boot的最佳实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89BOM%E6%9D%A5%E7%BB%B4%E6%8A%A4%E7%AC%AC%E4%B8%89%E6%96%B9%E4%BE%9D%E8%B5%96"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 使用自定义BOM来维护第三方依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E4%BD%BF%E7%94%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 使用自动化配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E6%AD%A3%E7%A1%AE%E8%AE%BE%E8%AE%A1%E4%BB%A3%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 正确设计代码目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E4%BF%9D%E6%8C%81Controller%E5%B1%82%E7%9A%84%E7%AE%80%E6%B4%81"><span class="toc-number">2.4.</span> <span class="toc-text">2.4. 保持Controller层的简洁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E5%9B%B4%E7%BB%95%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD%E6%9E%84%E5%BB%BAService"><span class="toc-number">2.5.</span> <span class="toc-text">2.5. 围绕业务功能构建Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">2.6.</span> <span class="toc-text">2.6. 使用全局异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-%E4%BD%BF%E7%94%A8-slf4j-%E6%97%A5%E5%BF%97"><span class="toc-number">2.7.</span> <span class="toc-text">2.7. 使用 slf4j 日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-%E4%BB%A3%E7%A0%81%E6%B5%8B%E8%AF%95"><span class="toc-number">2.8.</span> <span class="toc-text">2.8. 代码测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-%E4%BD%BF%E7%94%A8Swagger%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7"><span class="toc-number">2.9.</span> <span class="toc-text">2.9. 使用Swagger接口文档工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10-%E4%BD%BF%E6%95%B0%E6%8D%AE%E5%BA%93%E7%8B%AC%E7%AB%8B%E4%BA%8E%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E4%B9%8B%E5%A4%96"><span class="toc-number">2.10.</span> <span class="toc-text">2.10. 使数据库独立于核心业务逻辑之外</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-11-%E4%BD%BF%E7%94%A8Spring-Initializr%E6%9D%A5%E5%BC%80%E5%A7%8B%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84Spring-Boot%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.11.</span> <span class="toc-text">2.11. 使用Spring Initializr来开始一个新的Spring Boot项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-12-%E4%BD%BF%E7%94%A8-Lombok"><span class="toc-number">2.12.</span> <span class="toc-text">2.12. 使用 Lombok</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-13-%E9%81%BF%E5%85%8D%E7%A9%BA%E6%8C%87%E9%92%88%E5%BC%82%E5%B8%B8"><span class="toc-number">2.13.</span> <span class="toc-text">2.13. 避免空指针异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-14-%E4%BD%BF%E7%94%A8%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">2.14.</span> <span class="toc-text">2.14. 使用集合框架的最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-15-%E4%BD%BF%E7%94%A8%E5%88%86%E9%A1%B5"><span class="toc-number">2.15.</span> <span class="toc-text">2.15. 使用分页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-16-%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.16.</span> <span class="toc-text">2.16. 使用自定义响应对象</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By robotszx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

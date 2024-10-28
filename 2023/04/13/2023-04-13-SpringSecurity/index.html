@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SpringSecurity | 机器人之家</title><meta name="author" content="robotszx"><meta name="copyright" content="robotszx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1. Spring Security主要介绍前后端分离的SpringBoot项目中SpringSecurity的使用 1.1. 版本问题SpringBoot 2.7.0版本中SpringSecurity已经弃用WebSecurityConfigurerAdapter 新用法非常简单，无需再继承WebSecurityConfigurerAdapter，只需直接声明配置类，再配置一个生成Securit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringSecurity">
+<meta property="og:url" content="https://szx-zhao.github.io/2023/04/13/2023-04-13-SpringSecurity/index.html">
+<meta property="og:site_name" content="机器人之家">
+<meta property="og:description" content="1. Spring Security主要介绍前后端分离的SpringBoot项目中SpringSecurity的使用 1.1. 版本问题SpringBoot 2.7.0版本中SpringSecurity已经弃用WebSecurityConfigurerAdapter 新用法非常简单，无需再继承WebSecurityConfigurerAdapter，只需直接声明配置类，再配置一个生成Securit">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://szx-zhao.github.io/img/cover/1.png">
+<meta property="article:published_time" content="2023-04-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-12T16:00:00.000Z">
+<meta property="article:author" content="robotszx">
+<meta property="article:tag" content="Spring Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://szx-zhao.github.io/img/cover/1.png"><link rel="shortcut icon" href="/img/favicon/%E6%9C%BA%E5%99%A8%E4%BA%BA.png"><link rel="canonical" href="https://szx-zhao.github.io/2023/04/13/2023-04-13-SpringSecurity/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SpringSecurity',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-13 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="机器人之家"><span class="site-name">机器人之家</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SpringSecurity</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-12T16:00:00.000Z" title="发表于 2023-04-13 00:00:00">2023-04-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-12T16:00:00.000Z" title="更新于 2023-04-13 00:00:00">2023-04-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SpringSecurity"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-Spring-Security"><a href="#1-Spring-Security" class="headerlink" title="1. Spring Security"></a>1. <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-security/reference/5.7/servlet/getting-started.html">Spring Security</a></h1><p>主要介绍前后端分离的SpringBoot项目中SpringSecurity的使用</p>
+<h2 id="1-1-版本问题"><a href="#1-1-版本问题" class="headerlink" title="1.1. 版本问题"></a>1.1. 版本问题</h2><p>SpringBoot 2.7.0版本中SpringSecurity已经弃用<code>WebSecurityConfigurerAdapter</code></p>
+<p>新用法非常简单，无需再继承<code>WebSecurityConfigurerAdapter</code>，只需直接声明配置类，再配置一个生成<code>SecurityFilterChainBean</code>的方法，把原来的<code>HttpSecurity</code>配置移动到该方法中即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * SpringSecurity 5.4.x以上新用法配置</span></span><br><span class="line"><span class="comment"> * 为避免循环依赖，仅用于配置HttpSecurity</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    SecurityFilterChain <span class="title function_">filterChain</span><span class="params">(HttpSecurity httpSecurity)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">//省略HttpSecurity的配置</span></span><br><span class="line">        <span class="keyword">return</span> httpSecurity.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>升级 <code>Spring Boot 2.7.0</code>版本后，<code>Spring Security</code>对于配置方法有了大的更改，但是其他使用是没啥影响的</p>
+<h2 id="1-2-导入依赖"><a href="#1-2-导入依赖" class="headerlink" title="1.2. 导入依赖"></a>1.2. 导入依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>导入spring-boot-starter-security启动器后，Spring Security已经生效，默认拦截全部请求，在浏览器访问项目地址会进入Spring Security内置登录页面</p>
+<ul>
+<li>用户名： user</li>
+<li>密码：项目启动后，打印在控制台中</li>
+</ul>
+<p><strong>修改默认的用户名密码</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spring:  </span><br><span class="line">  security:  </span><br><span class="line">    user:  </span><br><span class="line">      name: admin  </span><br><span class="line">      password: admin123</span><br></pre></td></tr></table></figure>
+<h1 id="2-Spring-Security-配置"><a href="#2-Spring-Security-配置" class="headerlink" title="2. Spring Security 配置"></a>2. Spring Security 配置</h1><p>在 Spring Security 中，认证与授权的相关校验都是在一系列的过滤器链中完成的</p>
+<p>如果想要配置过滤器链，可以通过自定义<code>SecurityFilterChain</code> 来实现。如果想要配置WebSecurity，可以通过<code>WebSecurityCustomizer</code> 来实现</p>
+<p><strong>Spring Security中重要的类</strong></p>
+<ul>
+<li>WebSecurityConfigurerAdapter：自定义Security策略（自己编写配置类要继承该类）</li>
+<li>AuthenticationManagerBuilder：自定义认证策略</li>
+<li>@EnableWebSecurity：开启WebSecurity模式 （@Enablexxx 开启某个功能）</li>
+</ul>
+<h1 id="3-身份认证（Authentication）"><a href="#3-身份认证（Authentication）" class="headerlink" title="3. 身份认证（Authentication）"></a>3. 身份认证（Authentication）</h1><p>Spring Security 提供了多种身份验证机制，包括基于表单、基于HTTP基本认证、基于LDAP等</p>
+<p>下面主要介绍基于表单的认证</p>
+<h2 id="3-1-用户名密码认证"><a href="#3-1-用户名密码认证" class="headerlink" title="3.1. 用户名密码认证"></a>3.1. 用户名密码认证</h2><p>在实际项目中，认证逻辑是需要自定义控制的。将 UserDetailsService 接口的实现类用<code>@Bean</code>放入Spring容器即可自定义认证逻辑</p>
+<p>UserDetailsService 的实现类必须重写 loadUserByUsername 方法，该方法定义了具体的认证逻辑，参数 username 是前端传来的用户名，我们需要根据传来的用户名查询到该用户（一般是从数据库查询），并将查询到的用户封装成一个UserDetails对象，该对象是Spring Security提供的用户对象，包含用户名、密码、权限。Spring Security会根据 UserDetails对象中的密码和客户端提供密码进行比较。相同则认证 通过，不相同则认证失败。</p>
+<h3 id="3-1-1-内存认证"><a href="#3-1-1-内存认证" class="headerlink" title="3.1.1. 内存认证"></a>3.1.1. 内存认证</h3><p>InMemoryUserDetailsManager 是 UserDetailsService 接口的一个实现类，它将登录页传来的用户名密码和内存中用户名密码做匹配认证</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  </span><br><span class="line"><span class="meta">@EnableWebSecurity</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityConfig</span> &#123;</span><br><span class="line">	<span class="meta">@Bean</span>  </span><br><span class="line">	<span class="keyword">public</span> UserDetailsService <span class="title function_">memoryUser</span><span class="params">()</span>&#123;  </span><br><span class="line">	    <span class="comment">// 内存认证  </span></span><br><span class="line">	    <span class="type">InMemoryUserDetailsManager</span> <span class="variable">manager</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InMemoryUserDetailsManager</span>();  </span><br><span class="line">	    <span class="comment">// 创建用户  </span></span><br><span class="line">	    <span class="type">UserDetails</span> <span class="variable">user</span> <span class="operator">=</span> User.withUsername(<span class="string">&quot;admin&quot;</span>).password(passwordEncoder().encode(<span class="string">&quot;admin123&quot;</span>)).roles(<span class="string">&quot;admin&quot;</span>).build();  </span><br><span class="line">	    <span class="comment">// 将用户加载到内存中  </span></span><br><span class="line">	    manager.createUser(user);  </span><br><span class="line">	    <span class="keyword">return</span> manager;  </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-2-数据库认证"><a href="#3-1-2-数据库认证" class="headerlink" title="3.1.2. 数据库认证"></a>3.1.2. 数据库认证</h3><p>Spring Security 默认从内存加载用户，需要实现从数据库加载并校验用户。</p>
+<ul>
+<li>创建 <strong>UserServiceImpl</strong> 类</li>
+<li>实现 <strong>UserDetailsService</strong> 接口</li>
+<li>重写 <strong>loadUserByUsername</strong> 方法</li>
+<li>根据用户名校验用户并查询用户相关权限信息（授权）</li>
+<li>将数据封装成 <strong>UserDetails</strong>（创建类并实现该接口） 并返回</li>
+</ul>
+<h3 id="3-1-3-密码解析器"><a href="#3-1-3-密码解析器" class="headerlink" title="3.1.3. 密码解析器"></a>3.1.3. 密码解析器</h3><p>Spring Security要求容器中必须有 PasswordEncoder 实例，之前使用的NoOpPasswordEncoder 是 PasswordEncoder 的实现类，意思是不解析密码，使用明文密码。Spring Security官方推荐的是 BCryptPasswordEncoder。在开发中，我们将 BCryptPasswordEncoder 的实例放入Spring容器即可，并且在用户注册完成后，将密码加密再保存到数据库</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  </span><br><span class="line"><span class="meta">@EnableWebSecurity</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span>  </span><br><span class="line">    <span class="keyword">public</span> PasswordEncoder <span class="title function_">passwordEncoder</span><span class="params">()</span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">BCryptPasswordEncoder</span>();  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：同一密码每次加密后生成的密文互不相同，因此需使用 matches() 方法来进行比较</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BCryptPasswordEncoder</span> <span class="variable">passwordEncoder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BCryptPasswordEncoder</span>();</span><br><span class="line"><span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> passwordEncoder.encode(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line"><span class="type">boolean</span> <span class="variable">matches</span> <span class="operator">=</span> passwordEncoder.matches(<span class="string">&quot;123456&quot;</span>, password);</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-4-自定义登录"><a href="#3-1-4-自定义登录" class="headerlink" title="3.1.4. 自定义登录"></a>3.1.4. 自定义登录</h3><p>Spring Security 默认提供了登录页面，但在实际项目中是使用自己的登录页面。Spring Security也支持用户自定义登录页面</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  </span><br><span class="line"><span class="meta">@EnableWebSecurity</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span>  </span><br><span class="line">    <span class="keyword">public</span> SecurityFilterChain <span class="title function_">filterChain</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception&#123;  </span><br><span class="line">        http  </span><br><span class="line">                <span class="comment">// 过滤请求  </span></span><br><span class="line">                .authorizeRequests()  </span><br><span class="line">                <span class="comment">// 接口放行  </span></span><br><span class="line">                .antMatchers(<span class="string">&quot;/user/login&quot;</span>).permitAll()  </span><br><span class="line">                .anyRequest()  </span><br><span class="line">                .authenticated()  </span><br><span class="line">                .and()  </span><br><span class="line">                .csrf().disable()  </span><br><span class="line">                .headers().cacheControl().disable()  </span><br><span class="line">                .and()  </span><br><span class="line">                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);  </span><br><span class="line">      </span><br><span class="line">        <span class="keyword">return</span> http.build();  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Spring Security 为了防止CSRF攻击，默认开启了CSRF防护，这限制了除了 GET请求以外的大多数方法。我们要想正常使用Spring Security需要突破CSRF防护</p>
+<p><strong>解决方法一：关闭CSRF防护：</strong></p>
+<p><code>http.csrf().disable();</code></p>
+<h2 id="3-2-认证后的处理"><a href="#3-2-认证后的处理" class="headerlink" title="3.2. 认证后的处理"></a>3.2. 认证后的处理</h2><p>认证后，如果除了跳转页面还需要执行一些自定义代码时， 如：统计访问量，推送消息等操作时，可以自定义处理器</p>
+<p>在前后端分离这样的开发架构下，前后端的交互都是通过 JSON 来进行，无论登录成功还是失败，都不会有什么服务端跳转或者客户端跳转之类。</p>
+<p>登录成功了，服务端就返回一段登录成功的提示 JSON 给前端，前端收到之后，该跳转该展示，由前端自己决定，就和后端没有关系了。</p>
+<p>登录失败了，服务端就返回一段登录失败的提示 JSON 给前端，前端收到之后，该跳转该展示，由前端自己决定，也和后端没有关系了。</p>
+<h3 id="3-2-1-认证成功后的处理方式"><a href="#3-2-1-认证成功后的处理方式" class="headerlink" title="3.2.1. 认证成功后的处理方式"></a>3.2.1. 认证成功后的处理方式</h3><h3 id="3-2-2-认证失败后的处理方式"><a href="#3-2-2-认证失败后的处理方式" class="headerlink" title="3.2.2. 认证失败后的处理方式"></a>3.2.2. 认证失败后的处理方式</h3><h2 id="3-3-会话管理"><a href="#3-3-会话管理" class="headerlink" title="3.3. 会话管理"></a>3.3. 会话管理</h2><p>Security将用户信息保存在会话中，并提供会话管理，我们可以从 SecurityContext 对象中获取用户信息， SecurityContext 对象与当前线程进行绑定</p>
+<p>SecurityContextHolder工具类就是把SecurityContext存储在当前线程中。</p>
+<p>SecurityContextHolder可以用来设置和获取SecurityContext。它主要是给框架内部使用的，可以利用它获取当前用户的SecurityContext进行请求检查，和访问控制等。</p>
+<p>在Web环境下，SecurityContextHolder是利用ThreadLocal来存储SecurityContext的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CrossOrigin</span>  </span><br><span class="line"><span class="meta">@RestController</span>  </span><br><span class="line"><span class="meta">@RequestMapping(&quot;/user&quot;)</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;  </span><br><span class="line">    <span class="meta">@PostMapping(&quot;/login&quot;)</span>  </span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">login</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span>&#123;  </span><br><span class="line">  </span><br><span class="line">        <span class="type">SecurityContext</span> <span class="variable">context</span> <span class="operator">=</span> SecurityContextHolder.getContext();  </span><br><span class="line">        System.out.println(context.toString());  </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-4-remember-me-功能"><a href="#3-4-remember-me-功能" class="headerlink" title="3.4. remember me 功能"></a>3.4. remember me 功能</h2><p><code>记住我</code>功能，即下次访问系统时无需重新登录。当使用<code>记住我</code>功能登录后，Spring Security会生成一个令牌，令牌一方面保存到数据库中，另一方面生成一个叫 <code>remember-me</code> 的Cookie保存到客户端。之后客户端访问项目时自动携带令牌，不登录即可完成认证。</p>
+<h2 id="3-5-退出登录"><a href="#3-5-退出登录" class="headerlink" title="3.5. 退出登录"></a>3.5. 退出登录</h2><p>在系统中一般都有退出登录的操作。退出登录后，Spring Security 进行了以下操作：</p>
+<ul>
+<li>清除认证状态</li>
+<li>销毁HttpSession对象 </li>
+<li>跳转到登录页面</li>
+</ul>
+<h2 id="3-6-退出成功处理器"><a href="#3-6-退出成功处理器" class="headerlink" title="3.6. 退出成功处理器"></a>3.6. 退出成功处理器</h2><h1 id="4-授权（Authorization）"><a href="#4-授权（Authorization）" class="headerlink" title="4. 授权（Authorization）"></a>4. 授权（Authorization）</h1><p>Spring Security 提供了强大的授权机制，可以基于角色、权限或自定义逻辑来控制用户对资源的访问权限。您可以在配置文件或注解中定义授权规则，以限制用户对特定功能或页面的访问。</p>
+<h2 id="4-1-封装UserDetails对象"><a href="#4-1-封装UserDetails对象" class="headerlink" title="4.1. 封装UserDetails对象"></a>4.1. 封装UserDetails对象</h2><ul>
+<li>查询用户</li>
+<li>查询用户权限</li>
+<li>将自定义权限集合转为Security的权限类型集合</li>
+<li>封装为UserDetails对象</li>
+<li>返回封装好的UserDetails对象</li>
+</ul>
+<h2 id="4-2-资源访问控制"><a href="#4-2-资源访问控制" class="headerlink" title="4.2. 资源访问控制"></a>4.2. 资源访问控制</h2><h3 id="4-2-1-配置类设置"><a href="#4-2-1-配置类设置" class="headerlink" title="4.2.1. 配置类设置"></a>4.2.1. 配置类设置</h3><h3 id="4-2-2-自定义访问控制逻辑"><a href="#4-2-2-自定义访问控制逻辑" class="headerlink" title="4.2.2. 自定义访问控制逻辑"></a>4.2.2. 自定义访问控制逻辑</h3><p>如果资源数量很多，一条条配置需要的权限效率较低。我们可以自定义访问控制逻辑，即访问资源时判断用户是否具有名为该资源 URL的权限。</p>
+<h3 id="4-2-3-注解设置访问控制"><a href="#4-2-3-注解设置访问控制" class="headerlink" title="4.2.3. 注解设置访问控制"></a>4.2.3. 注解设置访问控制</h3><h2 id="4-3-无权限403处理方案"><a href="#4-3-无权限403处理方案" class="headerlink" title="4.3. 无权限403处理方案"></a>4.3. 无权限403处理方案</h2><ul>
+<li>编写权限不足页面 noPermission.html</li>
+<li>编写权限不足处理类</li>
+<li>在Spring Security配置文件中配置异常处理</li>
+</ul>
+<h1 id="5-认证和授权的集成"><a href="#5-认证和授权的集成" class="headerlink" title="5. 认证和授权的集成"></a>5. 认证和授权的集成</h1><p>Spring Security 可以与其他常见的身份验证和授权机制进行集成，如LDAP、OAuth、OpenID Connect等。这使得在现代应用程序中实现单点登录（SSO）和第三方身份验证变得更加容易。</p>
+<h1 id="6-安全事件和日志记录"><a href="#6-安全事件和日志记录" class="headerlink" title="6. 安全事件和日志记录"></a>6. 安全事件和日志记录</h1><p>Spring Security 提供了安全事件的记录和处理机制，您可以根据需要记录和处理登录成功、登录失败、访问受限等事件。这有助于监控应用程序的安全性和及时发现潜在的安全问题。</p>
+<h1 id="7-Spring-Security-中重要对象汇总"><a href="#7-Spring-Security-中重要对象汇总" class="headerlink" title="7. Spring Security 中重要对象汇总"></a>7. Spring Security 中重要对象汇总</h1><h1 id="8-Spring-Security-常用的属性"><a href="#8-Spring-Security-常用的属性" class="headerlink" title="8. Spring Security 常用的属性"></a>8. Spring Security 常用的属性</h1><ol>
+<li><code>security.basic.enabled</code>：设置是否启用HTTP基本认证，默认为<code>true</code>。</li>
+<li><code>security.basic.realm</code>：设置HTTP基本认证的领域（realm）名称，默认为<code>Spring</code>。</li>
+<li><code>security.enable-csrf</code>：设置是否启用跨站请求伪造（CSRF）保护，默认为<code>true</code>。</li>
+<li><code>security.csrf.method</code>：设置CSRF保护使用的HTTP方法，默认为<code>POST</code>。</li>
+<li><code>security.ignored</code>：设置忽略安全性保护的URL模式，默认为空。</li>
+<li><code>security.headers.cache</code>：设置是否启用HTTP缓存头部，默认为<code>false</code>。</li>
+<li><code>security.headers.hsts</code>：设置是否启用HTTP严格传输安全性（HSTS）头部，默认为<code>false</code>。</li>
+<li><code>security.headers.frame</code>：设置是否允许在页面中显示嵌入式框架，默认为<code>DENY</code>。</li>
+<li><code>security.headers.xss</code>：设置是否启用跨站脚本（XSS）保护，默认为<code>true</code>。</li>
+<li><code>security.session.maximumSessions</code>：设置最大会话数，默认为无限制。</li>
+<li><code>security.session.maxSessionsPreventsLogin</code>：设置是否阻止用户登录，如果超出了最大会话数，默认为<code>false</code>。</li>
+<li><code>security.session.session-fixation-protection</code>：设置会话固定保护，默认为<code>none</code>。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io">robotszx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io/2023/04/13/2023-04-13-SpringSecurity/">https://szx-zhao.github.io/2023/04/13/2023-04-13-SpringSecurity/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://szx-zhao.github.io" target="_blank">机器人之家</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Spring-Security/">Spring Security</a></div><div class="post_share"><div class="social-share" data-image="/img/cover/1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/25/2023-04-25-SpringBoot%E9%A1%B9%E7%9B%AE%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" title="SpringBoot项目最佳实践"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">SpringBoot项目最佳实践</div></div></a></div><div class="next-post pull-right"><a href="/2023/04/02/2023-04-02-Java%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" title="Java内存管理"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java内存管理</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">robotszx</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szx-zhao"><i class="fab fa-github"></i><span>前往未知的领域~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/szx-zhao" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1358861771@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Spring-Security"><span class="toc-number">1.</span> <span class="toc-text">1. Spring Security</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. 版本问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 导入依赖</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Spring-Security-%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">2. Spring Security 配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%EF%BC%88Authentication%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">3. 身份认证（Authentication）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81%E8%AE%A4%E8%AF%81"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 用户名密码认证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E5%86%85%E5%AD%98%E8%AE%A4%E8%AF%81"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1. 内存认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%A4%E8%AF%81"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2. 数据库认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-%E5%AF%86%E7%A0%81%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3. 密码解析器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-4-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%99%BB%E5%BD%95"><span class="toc-number">3.1.4.</span> <span class="toc-text">3.1.4. 自定义登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E8%AE%A4%E8%AF%81%E5%90%8E%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 认证后的处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E8%AE%A4%E8%AF%81%E6%88%90%E5%8A%9F%E5%90%8E%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1. 认证成功后的处理方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E8%AE%A4%E8%AF%81%E5%A4%B1%E8%B4%A5%E5%90%8E%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2. 认证失败后的处理方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 会话管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-remember-me-%E5%8A%9F%E8%83%BD"><span class="toc-number">3.4.</span> <span class="toc-text">3.4. remember me 功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95"><span class="toc-number">3.5.</span> <span class="toc-text">3.5. 退出登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-%E9%80%80%E5%87%BA%E6%88%90%E5%8A%9F%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">3.6.</span> <span class="toc-text">3.6. 退出成功处理器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%8E%88%E6%9D%83%EF%BC%88Authorization%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">4. 授权（Authorization）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%B0%81%E8%A3%85UserDetails%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 封装UserDetails对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E8%B5%84%E6%BA%90%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 资源访问控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-%E9%85%8D%E7%BD%AE%E7%B1%BB%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1. 配置类设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E9%80%BB%E8%BE%91"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2. 自定义访问控制逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-3-%E6%B3%A8%E8%A7%A3%E8%AE%BE%E7%BD%AE%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">4.2.3.</span> <span class="toc-text">4.2.3. 注解设置访问控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E6%97%A0%E6%9D%83%E9%99%90403%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. 无权限403处理方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E8%AE%A4%E8%AF%81%E5%92%8C%E6%8E%88%E6%9D%83%E7%9A%84%E9%9B%86%E6%88%90"><span class="toc-number">5.</span> <span class="toc-text">5. 认证和授权的集成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%AE%89%E5%85%A8%E4%BA%8B%E4%BB%B6%E5%92%8C%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95"><span class="toc-number">6.</span> <span class="toc-text">6. 安全事件和日志记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-Spring-Security-%E4%B8%AD%E9%87%8D%E8%A6%81%E5%AF%B9%E8%B1%A1%E6%B1%87%E6%80%BB"><span class="toc-number">7.</span> <span class="toc-text">7. Spring Security 中重要对象汇总</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-Spring-Security-%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">8.</span> <span class="toc-text">8. Spring Security 常用的属性</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By robotszx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

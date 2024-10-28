@@ -1,0 +1,470 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>IDEA使用 | 机器人之家</title><meta name="author" content="robotszx"><meta name="copyright" content="robotszx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1. IDEA版本建议使用专业版，且使用大版本的最后一个更新版，如 2022.3.x 下载zip格式的，解压即用无需安装 2. 初始化配置将项目都关闭后，在idea的初始界面进行配置，这样是全局的配置，对每个项目都生效的 2.1. 强制配置 IDEA中的text file encoding设置为UTF- 8，with no bom，transparent  to ascii 都勾选 IDEA中文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDEA使用">
+<meta property="og:url" content="https://szx-zhao.github.io/2023/01/12/2023-01-12-IDEA%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="机器人之家">
+<meta property="og:description" content="1. IDEA版本建议使用专业版，且使用大版本的最后一个更新版，如 2022.3.x 下载zip格式的，解压即用无需安装 2. 初始化配置将项目都关闭后，在idea的初始界面进行配置，这样是全局的配置，对每个项目都生效的 2.1. 强制配置 IDEA中的text file encoding设置为UTF- 8，with no bom，transparent  to ascii 都勾选 IDEA中文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://szx-zhao.github.io/img/cover/5.png">
+<meta property="article:published_time" content="2023-01-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-11T16:00:00.000Z">
+<meta property="article:author" content="robotszx">
+<meta property="article:tag" content="IDE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://szx-zhao.github.io/img/cover/5.png"><link rel="shortcut icon" href="/img/favicon/%E6%9C%BA%E5%99%A8%E4%BA%BA.png"><link rel="canonical" href="https://szx-zhao.github.io/2023/01/12/2023-01-12-IDEA%E4%BD%BF%E7%94%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'IDEA使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-12 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/5.png')"><nav id="nav"><span id="blog-info"><a href="/" title="机器人之家"><span class="site-name">机器人之家</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">IDEA使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-11T16:00:00.000Z" title="发表于 2023-01-12 00:00:00">2023-01-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-11T16:00:00.000Z" title="更新于 2023-01-12 00:00:00">2023-01-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="IDEA使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-IDEA版本"><a href="#1-IDEA版本" class="headerlink" title="1. IDEA版本"></a>1. IDEA版本</h1><p>建议使用专业版，且使用大版本的最后一个更新版，如 2022.3.x</p>
+<p>下载zip格式的，解压即用无需安装</p>
+<h1 id="2-初始化配置"><a href="#2-初始化配置" class="headerlink" title="2. 初始化配置"></a>2. 初始化配置</h1><p>将项目都关闭后，在idea的初始界面进行配置，这样是全局的配置，对每个项目都生效的</p>
+<h2 id="2-1-强制配置"><a href="#2-1-强制配置" class="headerlink" title="2.1. 强制配置"></a>2.1. 强制配置</h2><ul>
+<li>IDEA中的text file encoding设置为UTF- 8，with no bom，transparent  to ascii 都勾选</li>
+<li>IDEA中文件的换行符使用Unix格式，不要使用Windows格式</li>
+<li>IDEA设置tab为 4 个空格，请勿勾选Use tab character</li>
+</ul>
+<h2 id="2-2-建议配置"><a href="#2-2-建议配置" class="headerlink" title="2.2. 建议配置"></a>2.2. 建议配置</h2><ul>
+<li>字体设置<code>consolas</code></li>
+<li>方法间加横线<code>editor-&gt;general-&gt;appearance-&gt; 选show method separators</code></li>
+<li>代码提示不区分大小写<code>editor-&gt;general-&gt;code completion-&gt; 选all letters</code></li>
+<li>自动导包功能及相关优化功能<code>Settings -&gt; Editor -&gt; General -&gt; Auto Import</code></li>
+</ul>
+<p><code>Add UNambiguous imports on the fly</code>选项：IDEA 将在书写代码的时候自动帮我们导入需要用到的包。但是对于那些同名的包，还是需要手动 Alt + Enter 进行导入</p>
+<p><code>Optimize imports on the fly</code>选项：IDEA 将在我们书写代码的时候自动帮我们优化导入的包，比如自动去掉一些没有用到的包</p>
+<ul>
+<li>CTRL + 滑动滚轮 调整窗口显示大小</li>
+</ul>
+<p><code>Settings -&gt; Editor -&gt; General -&gt; Change font size (Zoom) with Ctrl+Mouse wheel</code></p>
+<ul>
+<li>代码编辑区显示行号</li>
+</ul>
+<p><code>Settings -&gt; Editor -&gt; General -&gt; Appearance</code> 勾选 <code>Show Line Numbers</code></p>
+<h1 id="3-快捷键"><a href="#3-快捷键" class="headerlink" title="3. 快捷键"></a>3. 快捷键</h1><h2 id="3-1-模板相关"><a href="#3-1-模板相关" class="headerlink" title="3.1. 模板相关"></a>3.1. 模板相关</h2><p>idea里面提供了两套模板Live Templates和Postfix Completion。Live Templates 可以自定义，而 Postfix Completion 不可以。Postfix Completion的功能：快速生成语句，如 sout生成<code>System.out.println()</code></p>
+<h3 id="3-1-1-Postfix-Completion"><a href="#3-1-1-Postfix-Completion" class="headerlink" title="3.1.1. Postfix Completion"></a>3.1.1. Postfix Completion</h3><p>具体可查看<code>editor-&gt;general-&gt;Postfix Completion</code></p>
+<h3 id="3-1-2-File-and-Code-Template"><a href="#3-1-2-File-and-Code-Template" class="headerlink" title="3.1.2. File and Code Template"></a>3.1.2. File and Code Template</h3><p><strong>文件代码模板</strong></p>
+<p><code>Settings -&gt; Editor -&gt; File and Code Template</code></p>
+<p>当你选择某个文件生成时，就会按照这里面的模板生成指定的代码文件</p>
+<h3 id="3-1-3-Live-Templates"><a href="#3-1-3-Live-Templates" class="headerlink" title="3.1.3. Live Templates"></a>3.1.3. Live Templates</h3><p><strong>定制代码模板</strong></p>
+<p><code>Settings -&gt; Editor -&gt; Live Templates</code> 可以按照自己的使用习惯来定制相关的代码模板</p>
+<h2 id="3-2-其他操作"><a href="#3-2-其他操作" class="headerlink" title="3.2. 其他操作"></a>3.2. 其他操作</h2><p><strong>快速生成标准类</strong></p>
+<p><code>右键 generate --&gt; getter、setter</code></p>
+<p><strong>获取完整包路径</strong></p>
+<p><code>项目结构中的文件处，右键 copypath</code></p>
+<p><strong>查看pom.xml依赖树</strong></p>
+<p>在<code>pom.xml</code>中右键<code>diagrams--&gt;show dependency</code></p>
+<p><strong>生成JavaDoc文档</strong></p>
+<p><code>打开idea上方工具（Tools) 生成JavaDoc文档（Generate JavaDoc...）</code></p>
+<p>注意 设置编码，防止中文乱码</p>
+<p><strong>生成构造方法</strong></p>
+<p><code>右键 generate --&gt; constructor</code></p>
+<p><strong>重命名变量</strong>（可以一键全部替换）shift+alt+r</p>
+<p><strong>Ctrl + 鼠标滚轮设置字体大小</strong>，按住Ctrl + Shift + A调出搜索框，调出搜索框后搜索关键词 <code>mouse</code> ，设置鼠标相关设置，选择<code>Change font size with Ctrl + Mouse Wheel</code></p>
+<h2 id="3-3-查找"><a href="#3-3-查找" class="headerlink" title="3.3. 查找"></a>3.3. 查找</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + F</td>
+<td>在当前文件进行文本查找</td>
+</tr>
+<tr>
+<td>Ctrl + R</td>
+<td>在当前文件进行文本替换</td>
+</tr>
+<tr>
+<td>Shift + Ctrl + F</td>
+<td>在项目进行文本查找</td>
+</tr>
+<tr>
+<td>Shift + Ctrl + R</td>
+<td>在项目进行文本替换</td>
+</tr>
+<tr>
+<td>Shift + Shift</td>
+<td>快速搜索</td>
+</tr>
+<tr>
+<td>Ctrl + b</td>
+<td>查看方法对应的源代码</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-4-跳转切换"><a href="#3-4-跳转切换" class="headerlink" title="3.4. 跳转切换"></a>3.4. 跳转切换</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + Tab</td>
+<td>切换文件</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + ←/→</td>
+<td>跳转历史光标所在处</td>
+</tr>
+<tr>
+<td>Alt + ←/→ 方向键</td>
+<td>切换子tab</td>
+</tr>
+<tr>
+<td>Ctrl + G</td>
+<td>go to（跳转指定行号）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-5-编码相关"><a href="#3-5-编码相关" class="headerlink" title="3.5. 编码相关"></a>3.5. 编码相关</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + <code>/</code></td>
+<td>生成注释</td>
+</tr>
+<tr>
+<td>Ctrl + Y</td>
+<td>删除整行</td>
+</tr>
+<tr>
+<td>Ctrl + Z 、Ctrl + Shift + Z</td>
+<td>后悔药，撤销、取消撤销</td>
+</tr>
+<tr>
+<td>Alt + enter</td>
+<td>IntelliJ IDEA 根据光标所在问题，提供快速修复选择，光标放在的位置不同提示的结果也不同</td>
+</tr>
+<tr>
+<td>Alt + ↑/↓</td>
+<td>方法快速跳转</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>跳转到下一个高亮错误 或 警告位置</td>
+</tr>
+<tr>
+<td>Alt + Insert</td>
+<td>代码自动生成，如生成对象的 set / get 方法，构造函数，toString() 等</td>
+</tr>
+<tr>
+<td>Ctrl + Shift+Alt + L</td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td>Shift + F6</td>
+<td>快速修改方法名、变量名、文件名、类名等</td>
+</tr>
+<tr>
+<td>Ctrl + F6</td>
+<td>快速修改方法签名</td>
+</tr>
+<tr>
+<td>Ctrl + shift + u</td>
+<td>字母转大写或小写</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-6-代码阅读相关"><a href="#3-6-代码阅读相关" class="headerlink" title="3.6. 代码阅读相关"></a>3.6. 代码阅读相关</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + P</td>
+<td>方法参数提示显示</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + i</td>
+<td>就可以在当前类里再弹出一个窗口出来</td>
+</tr>
+<tr>
+<td>Alt + F7</td>
+<td>可以列出变量在哪些地方被使用了</td>
+</tr>
+<tr>
+<td>光标在子类接口名，Ctrl + u</td>
+<td>跳到父类接口</td>
+</tr>
+<tr>
+<td>Ctrl + (Alt) + B</td>
+<td>跳转方法定义/实现</td>
+</tr>
+<tr>
+<td>Ctrl + H</td>
+<td>类的层级关系</td>
+</tr>
+<tr>
+<td>Ctrl + F12</td>
+<td>Show Members 类成员快速显示</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="4-插件推荐"><a href="#4-插件推荐" class="headerlink" title="4. 插件推荐"></a>4. 插件推荐</h1><p><strong>Alibaba Java Coding Guidelines​​</strong>：阿里巴巴 Java 代码规范</p>
+<p><strong>Rainbow Brackets</strong>：彩虹括号，代码层级变得更加清晰</p>
+<p><strong>CodeGlance</strong>：代码微型地图</p>
+<p><strong>jclasslib</strong>：一款IDEA字节码查看神器</p>
+<p><strong>SequenceDiagram</strong>：一键可以生成时序图</p>
+<p><strong>EasyCode</strong>：可以直接对数据的表生成 entity、controller、service、dao、mapper 无需任何编码</p>
+<p><strong>maven helper</strong>：maven 依赖管理助手 ，解析maven pom结构，分析冲突</p>
+<p><strong>MyBatis Log Plugin</strong>：把 Mybatis 输出的sql日志还原成完整的sql语句，看起来更直观</p>
+<p><strong>String Manipulation</strong>：String相关辅助简化，搭配 CTRL+W 、ALT+J等文本选择快捷键使用</p>
+<p><strong>Visual Studio Code Dark Plus Theme</strong>：一款VSCode风格的主题</p>
+<p><strong>One Dark</strong>：一款优雅暗色风格主题</p>
+<p><strong>Background Image Plus</strong>: 背景图片</p>
+<p><strong>Statistic</strong>：可以非常直观地看到你的项目中所有类型的文件的信息比如数量、大小</p>
+<p><strong>Key Promoter X</strong>：当在 IDE 内部的按钮上使用鼠标时，Key Promoter X 会显示您应该使用的键盘快捷键，有助于过渡到更快的无鼠标开发</p>
+<p><strong>Save Actions</strong>：可以帮助我们在保存文件的时候：优化导入；格式化代码</p>
+<p><strong>Free MyBatis tool</strong></p>
+<ul>
+<li>生成mapper xml文件</li>
+<li>快速从代码跳转到mapper及从mapper返回代码</li>
+<li>mybatis自动补全及语法错误提示</li>
+<li>集成mybatis generator gui界面</li>
+</ul>
+<p><strong>GsonFormatPlus</strong></p>
+<p>根据JSONObject格式的字符串,自动生成实体类参数</p>
+<p><strong>.ignore</strong></p>
+<p>这个插件方便我们在使用版本管理时对一些不想要上传的文件进行管理</p>
+<p><strong>sonarLint</strong></p>
+<p>代码规范性检查</p>
+<p><strong>easy Javadoc</strong></p>
+<p>快速生成类、方法、字段 的注释</p>
+<p><strong>Squaretest</strong></p>
+<p>自动生成单元测试代码，在选中类右键<code>Generate -&gt; Generate Test</code> 后，不光能生成测试类和方法，甚至连Mockito 数据、方法和 Assertions 等都写好了，只需要自己改一改即可。</p>
+<p><strong>diffblue</strong> </p>
+<p>单元测试生成插件</p>
+<h1 id="5-IDEA中使用Git"><a href="#5-IDEA中使用Git" class="headerlink" title="5. IDEA中使用Git"></a>5. IDEA中使用Git</h1><p>克隆、提交、推送、分支、冲突解决、历史查看、版本回退、版本对比</p>
+<p><strong>在IEDA里配置git执行程序的路径</strong></p>
+<p><code>【File】→ 【Settings】→ 【Vwesion Control】→ 【Git】</code>，选择git可执行文件的路径（正确配置的情况下，点击Test会弹出git版本的提示）</p>
+<p><strong>使用IDEA中的Git工具从远程仓库克隆项目</strong></p>
+<p>打开IDEA，选择菜单上的 VCS（版本控制工具），选择【Checkout from Version Control】→【Git】</p>
+<p><strong>添加文件到暂存区</strong></p>
+<p>我们在项目里每添加一个文件，IDEA就会询问我们是否将文件添加到Git，选择【Add】将文件添加进git暂存区，此时git就可以对其文件进行追踪</p>
+<p><strong>提交到本地仓库</strong></p>
+<p>完成代码的开发后，需要将修改和添加的代码或文件提交到本地仓库上（文件已添加至暂存区，受git追踪），选择【VCS】→ 【Commit】</p>
+<p><strong>推送到远程仓库</strong></p>
+<p>把代码推送到远程服务器上，点击项目右键 →【Git】→【 Repositry 】→【Push】</p>
+<p><strong>分支开发（重点掌握）</strong></p>
+<p>假如，现在项目开发完成，需发布1.0版本，然后添加一个1.0的分支</p>
+<ul>
+<li>打开git分支的面板，点击【New Branch】</li>
+<li>输入分支名称，点击【OK】，创建了1.0的分支</li>
+<li>然后切换回主干分支master，进行2.0版本的开发</li>
+</ul>
+<p><strong>分支合并</strong></p>
+<ul>
+<li>在1.0分支上完成BUG修改后，将主分支（master分支）与1.0分支进行合并。需要先切换到master分支，然后进行操作</li>
+<li>选择合并的分支（remote/orgin/1.0-提交到远程服务器上的1.0版本），填写合并的消息，点击【Merge】</li>
+<li>合并后，就把 master分支推上服务器。然后再从 mater 中创建2.0分支，那么 master 就是3.0版本了</li>
+</ul>
+<p><strong>冲突解决</strong></p>
+<p>冲突的场景</p>
+<ul>
+<li>多个分支合并的时候</li>
+<li>在一个分支上拉取或推送远程文件时</li>
+</ul>
+<p><strong>提交历史记录查看</strong></p>
+<p>查看文件或项目提交的历史记录：点击文件右键菜单 → 【Git】→ 【Show History】</p>
+<p><strong>回退上一个版本</strong></p>
+<p>打开文件的历史提交记录（在上边的第10点），选择回退的版本 → 【Get】</p>
+<h1 id="6-Debug（重点）"><a href="#6-Debug（重点）" class="headerlink" title="6. Debug（重点）"></a>6. Debug（重点）</h1><p>重点：在断点调试过程中，是运行状态，对象是运行类型，不是编译类型</p>
+<h2 id="6-1-什么是断点调试"><a href="#6-1-什么是断点调试" class="headerlink" title="6.1. 什么是断点调试"></a>6.1. 什么是断点调试</h2><p>断点调试是指在程序的某一行设置一个断点，调试时，程序运行到这一行就会停住，然后你可以一步一步往下调试，调试过程中可以看各个变量当前的值，出错的话，调试到出错的代码行即显示错误，停下。进行分析从而找到这个Bug</p>
+<h2 id="6-2-断点调试快捷键"><a href="#6-2-断点调试快捷键" class="headerlink" title="6.2. 断点调试快捷键"></a>6.2. 断点调试快捷键</h2><p>idea支持debug过程中动态设置断点</p>
+<ul>
+<li>F7：跳入方法内（alt + shift + F7 强制进入JDK源码）</li>
+<li>F8：逐行执行代码</li>
+<li>shift + F8：跳出方法</li>
+<li>F9：执行到下一个断点</li>
+</ul>
+<h1 id="7-自动格式化代码"><a href="#7-自动格式化代码" class="headerlink" title="7. 自动格式化代码"></a>7. 自动格式化代码</h1><p>安装 google-java-format插件 + Save Actions 插件</p>
+<p>重启idea</p>
+<p>启用google-java-format，<code>other setting -&gt; google-java-format -&gt; 勾选 enable Google-Java-format</code></p>
+<p>启用Save Actions，<code>other setting -&gt; Save Actions -&gt; 勾选 active save action on save、勾选organize import、勾选reformat file</code></p>
+<h1 id="8-当关闭IDEA时，提示“Closing-project”"><a href="#8-当关闭IDEA时，提示“Closing-project”" class="headerlink" title="8. 当关闭IDEA时，提示“Closing project”"></a>8. 当关闭IDEA时，提示“Closing project”</h1><p><code>菜单 -&gt; Help -&gt; Find Action -&gt; 输入“Registry” -&gt; 在提示结果点击“Registry..”</code> </p>
+<p>去掉<code>“ide.await.scope.completion”</code>的勾选</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io">robotszx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io/2023/01/12/2023-01-12-IDEA%E4%BD%BF%E7%94%A8/">https://szx-zhao.github.io/2023/01/12/2023-01-12-IDEA%E4%BD%BF%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://szx-zhao.github.io" target="_blank">机器人之家</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/IDE/">IDE</a></div><div class="post_share"><div class="social-share" data-image="/img/cover/5.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/01/20/2023-01-20-Docker%E7%90%86%E8%AE%BA/" title="Docker理论"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Docker理论</div></div></a></div><div class="next-post pull-right"><a href="/2023/01/12/2023-01-12-JavaScript%E5%85%A5%E9%97%A8/" title="JavaScript入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaScript入门</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/06/30/2024-06-30-Pycharm%E4%BD%BF%E7%94%A8/" title="Pycharm使用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-30</div><div class="title">Pycharm使用</div></div></a></div><div><a href="/2024/08/29/2024-08-29-VSCode%E4%BD%BF%E7%94%A8/" title="VSCode使用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-29</div><div class="title">VSCode使用</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">robotszx</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szx-zhao"><i class="fab fa-github"></i><span>前往未知的领域~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/szx-zhao" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1358861771@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-IDEA%E7%89%88%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">1. IDEA版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">2. 初始化配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%BC%BA%E5%88%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 强制配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%BB%BA%E8%AE%AE%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 建议配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">3.</span> <span class="toc-text">3. 快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%A8%A1%E6%9D%BF%E7%9B%B8%E5%85%B3"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 模板相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-Postfix-Completion"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1. Postfix Completion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-File-and-Code-Template"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2. File and Code Template</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-Live-Templates"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3. Live Templates</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 其他操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E6%9F%A5%E6%89%BE"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E8%B7%B3%E8%BD%AC%E5%88%87%E6%8D%A2"><span class="toc-number">3.4.</span> <span class="toc-text">3.4. 跳转切换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E7%BC%96%E7%A0%81%E7%9B%B8%E5%85%B3"><span class="toc-number">3.5.</span> <span class="toc-text">3.5. 编码相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%9B%B8%E5%85%B3"><span class="toc-number">3.6.</span> <span class="toc-text">3.6. 代码阅读相关</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="toc-number">4.</span> <span class="toc-text">4. 插件推荐</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-IDEA%E4%B8%AD%E4%BD%BF%E7%94%A8Git"><span class="toc-number">5.</span> <span class="toc-text">5. IDEA中使用Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Debug%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">6. Debug（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95"><span class="toc-number">6.1.</span> <span class="toc-text">6.1. 什么是断点调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">6.2.</span> <span class="toc-text">6.2. 断点调试快捷键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">7. 自动格式化代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%BD%93%E5%85%B3%E9%97%ADIDEA%E6%97%B6%EF%BC%8C%E6%8F%90%E7%A4%BA%E2%80%9CClosing-project%E2%80%9D"><span class="toc-number">8.</span> <span class="toc-text">8. 当关闭IDEA时，提示“Closing project”</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By robotszx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
