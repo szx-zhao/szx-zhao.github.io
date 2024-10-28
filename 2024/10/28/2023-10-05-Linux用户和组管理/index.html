@@ -1,0 +1,555 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>机器人之家 | 机器人之家</title><meta name="author" content="robotszx"><meta name="copyright" content="robotszx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1. 用户和组配置文件安全3A  Authentication  认证（确定验证身份） Authorization  授权 Accounting Audition  审计  用户user 令牌 token，identity  用户账号在登录时会获取令牌 权限是根据ID号划分的 Linux 用户：Username，UID  管理员：root，0 普通用户：1-60000 自动分配 系统用户（对进程的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器人之家">
+<meta property="og:url" content="https://szx-zhao.github.io/2024/10/28/2023-10-05-Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="机器人之家">
+<meta property="og:description" content="1. 用户和组配置文件安全3A  Authentication  认证（确定验证身份） Authorization  授权 Accounting Audition  审计  用户user 令牌 token，identity  用户账号在登录时会获取令牌 权限是根据ID号划分的 Linux 用户：Username，UID  管理员：root，0 普通用户：1-60000 自动分配 系统用户（对进程的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://szx-zhao.github.io/img/cover/1.png">
+<meta property="article:published_time" content="2024-10-28T12:46:25.138Z">
+<meta property="article:modified_time" content="2024-10-17T07:56:20.000Z">
+<meta property="article:author" content="robotszx">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://szx-zhao.github.io/img/cover/1.png"><link rel="shortcut icon" href="/img/favicon/%E6%9C%BA%E5%99%A8%E4%BA%BA.png"><link rel="canonical" href="https://szx-zhao.github.io/2024/10/28/2023-10-05-Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '机器人之家',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-17 15:56:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="机器人之家"><span class="site-name">机器人之家</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-28T12:46:25.138Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-17T07:56:20.000Z" title="更新于 2024-10-17 15:56:20">2024-10-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-用户和组配置文件"><a href="#1-用户和组配置文件" class="headerlink" title="1. 用户和组配置文件"></a>1. 用户和组配置文件</h1><p><strong>安全3A</strong></p>
+<ul>
+<li>Authentication  认证（确定验证身份）</li>
+<li>Authorization  授权</li>
+<li>Accounting Audition  审计</li>
+</ul>
+<p><strong>用户user</strong></p>
+<p>令牌 token，identity </p>
+<p>用户账号在登录时会获取令牌</p>
+<p>权限是根据ID号划分的</p>
+<p>Linux 用户：Username，UID</p>
+<ul>
+<li>管理员：root，0</li>
+<li>普通用户：1-60000 自动分配<ul>
+<li>系统用户（对进程的运行进行权限分配）：1-499、1-999 （CentOS7）</li>
+<li>登录用户（交互式登录）：500+、1000+ （CentOS7）</li>
+</ul>
+</li>
+</ul>
+<p>系统用户一般是给应用程序使用的，系统用户没有家目录，给应用程序使用的用户对应的shell类型一般是nologin类型</p>
+<p><strong>组group</strong></p>
+<p>组是多个用户的集合</p>
+<p>Linux中允许用户和组重名（Windows不允许）</p>
+<p>用户和组是多对多的关系</p>
+<p>Linux 组：Groupname，GID</p>
+<ul>
+<li>管理员组：root，0</li>
+<li>系统组：1-499、1-999<ul>
+<li>系统组：1-499、1-99</li>
+<li>普通组：500+、100+</li>
+</ul>
+</li>
+</ul>
+<p><strong>安全上下文</strong></p>
+<p>每个运行中的程序（进程）都有其对应的运行者的身份（用户），进程所能够访问资源的权限取决于进程的运行者的身份</p>
+<p><strong>组的类别</strong></p>
+<p>用户的主要组（primary group）</p>
+<ul>
+<li>用户必须属于一个且只能属于一个主组</li>
+<li>Linux中新建一个用户，系统会自动创建一个同名的组，作为新建用户的主组</li>
+</ul>
+<p>用户的附加组（supplementary group）</p>
+<ul>
+<li>一个用户可以属于零个或多个辅助组</li>
+</ul>
+<p><strong>用户和组的配置文件</strong></p>
+<p><code>/etc/passwd</code>：用户及其属性信息</p>
+<ul>
+<li>格式<code>username:password:UID:GID:GECOS:home_directory:shell</code></li>
+</ul>
+<p><code>/etc/group</code>：组及其属性信息</p>
+<ul>
+<li>格式<code>groupname:password:GID:user_list</code></li>
+</ul>
+<p><code>/etc/shadow</code>：用户密码及其相关属性</p>
+<ul>
+<li>格式<code>username:password:last_password_change:min_days:max_days:warn_days:inactive_days:expire_date:reserved</code></li>
+</ul>
+<p><code>/etc/gshadow</code>：组密码及其相关属性</p>
+<ul>
+<li>格式<code>groupname:password:admin_list:member_list</code></li>
+<li><code>!!</code>表示禁用</li>
+<li><code>!</code>表示锁定</li>
+</ul>
+<p><strong>密码</strong></p>
+<p>生成随机口令 <code>openssl rand -base64 12</code></p>
+<p>密码期限 minday、maxday、warnday、inactiveday</p>
+<h1 id="2-用户管理命令"><a href="#2-用户管理命令" class="headerlink" title="2. 用户管理命令"></a>2. 用户管理命令</h1><p><strong>操作用户和组的配置文件</strong></p>
+<p>vipw（vi etc/passwd）和 vigr（vi etc/group）</p>
+<p>具有编辑文件与语法检查功能</p>
+<p>pwck和 grpck</p>
+<p>检查命令是否正确</p>
+<p><strong>用户管理命令</strong></p>
+<p>用户创建<code>useradd [options]</code> </p>
+<p>默认值设定<code>/etc/default/useradd</code>文件中</p>
+<ul>
+<li><code>-D</code> 显示默认设置</li>
+<li><code>-u</code> UID</li>
+<li><code>-o</code>配合<code>-u</code>选项，不检查UID的唯一性</li>
+<li><code>-g GID</code> 指明用户所属基本组，可为组名，也可以是GID</li>
+<li><code>-c &quot;COMMENT&quot;</code>用户的注释信息</li>
+<li><code>-d HOME_DIR</code> 以指定的路径（不存在）为家目录</li>
+<li><code>-s SHELL</code> 指明用户的默认shell程序，可用的shell在<code>/etc/shells</code>中，通常使用<code>/sbin/nologin</code>或<code>/bin/bash</code></li>
+<li><code>-G GROUP1[,GROUP2.…]</code>为用户指明附加组，组须事先存在</li>
+<li><code>-N</code>不创建私用组做主组，使用users组做主组</li>
+<li><code>-r</code>创建系统用户CentOS 6:lD&lt;500，CentOS 7:lD&lt;1000</li>
+<li><code>-m</code>强制创建家目录，用于系统用户</li>
+<li><code>-M</code>强制不创建家目录，用于非系统用户</li>
+</ul>
+<p>批量创建用户<code>newusers /etc/passwd格式的文件</code></p>
+<p>批量修改口令<code>echo username:password | chpasswd</code></p>
+<p>用户属性修改 <code>usermod [options]</code></p>
+<ul>
+<li><code>-u UID</code>新UID</li>
+<li><code>-g GID</code>新主组</li>
+<li><code>-G GROUP1[,GROUP2..[,GROUPN]]]</code>新附加组，原来的附加组将会被覆盖；若保留原有，则要同时使用<code>-a</code>选项</li>
+<li>-<code>s SHELL</code> 新的默认SHELL</li>
+<li><code>-c &#39;COMMENT&#39;</code>新的注释信息</li>
+<li><code>-d HOME</code>新家目录不会自动创建；若要创建新家目录并移动原家数据，同时使用<code>-m</code>选项</li>
+<li><code>-l login_name</code>新的名字</li>
+<li><code>-L</code> 锁定用户，会在<code>/etc/shadow</code>密码栏增加<code>!</code></li>
+<li><code>-U</code> 解锁用户，会将<code>/etc/shadow</code>密码栏的<code>!</code>拿掉</li>
+<li><code>-e YYYY-MM-DD</code> 指明用户账号过期日期</li>
+<li><code>-f INACTIVE</code> 设定非活动期限</li>
+</ul>
+<p>删除用户 <code>userdel [options]</code></p>
+<ul>
+<li><code>-r</code>删除用户家目录</li>
+<li>正在登录的用户无法直接删除</li>
+</ul>
+<p><strong>查看用户相关的ID信息</strong></p>
+<p><code>id [options]... [USER]</code></p>
+<ul>
+<li><code>-u</code> 显示UID</li>
+<li><code>-g</code> 显示GID</li>
+<li><code>-G</code> 显示用户所属的组的ID</li>
+<li><code>-n</code> 显示名称，需配合u、g、G使用</li>
+</ul>
+<p><strong>切换用户或以其他用户身份执行命令</strong></p>
+<p><code>su [options...] [-] [user [args...]]</code>切换用户的方式</p>
+<ul>
+<li><code>su UserName</code> 非登录式切换，即不会读取目标用户的配置文件，不改变当前工作目录</li>
+<li><code>su - UserName</code>或<code>su -l UserName</code>登录式切换，会读取目标用户的配置文件，切换至家目录，完全切换</li>
+<li>root用户su至其他用户无须密码，非root用户切换时需要密码</li>
+<li>换个身份执行命令 <code>su [-] UserName -c &#39;command&#39;</code></li>
+</ul>
+<p><strong>设置密码</strong></p>
+<p><code>passwd [OPTIONS] UserName</code> 修改指定用户的密码</p>
+<ul>
+<li><code>-d</code>删除指定用户密码</li>
+<li><code>-l</code> 锁定指定用户</li>
+<li><code>-u</code>解锁指定用户</li>
+<li><code>-e</code>强制用户下次登录修改密码</li>
+<li><code>-f</code>强制操作</li>
+<li><code>-n mindays</code>指定最短使用期限</li>
+<li><code>-x maxdays</code>最大使用期限</li>
+<li><code>-w warndays</code>提前多少天开始警告</li>
+<li><code>-i inactivedays</code>非活动期限</li>
+<li><code>--stdin</code> 从标准输入接收用户密码 <code>echo &quot;password&quot; | passwd --stdin username</code></li>
+</ul>
+<p><strong>修改用户密码策略</strong></p>
+<p><code>chage [OPTION]...</code></p>
+<ul>
+<li><code>-d LAST_DAY</code></li>
+<li><code>-E EXPIRE_DATE</code></li>
+<li><code>-I INACTIVE</code></li>
+<li><code>-m</code> MIN_DAYS</li>
+<li><code>-M</code> MAX_DAYS</li>
+<li><code>-W</code> WARN_DAYS</li>
+<li><code>-l</code> 显示密码策略</li>
+</ul>
+<p><strong>用户相关的其他命令</strong></p>
+<p><code>chfn</code>指定个人信息</p>
+<p><code>chsh</code>指定shell</p>
+<h1 id="3-用户和组管理"><a href="#3-用户和组管理" class="headerlink" title="3. 用户和组管理"></a>3. 用户和组管理</h1><p><strong>组的维护命令</strong></p>
+<p>创建组 <code>groupadd [options]</code></p>
+<ul>
+<li><code>-g GID</code>指明GID号</li>
+<li><code>-r</code> 创建系统组 CentOS 6:ID&lt;500，CentOS 7:ID&lt;1000</li>
+</ul>
+<p>修改和删除组 <code>groupmod [options]</code></p>
+<ul>
+<li><code>-n groupname</code> 修改组名</li>
+<li><code>-g GID</code> 修改GID</li>
+</ul>
+<p>组删除 <code>groupdel groupname</code> 附加组可以直接删，主组不能直接删</p>
+<p><strong>更改组密码</strong></p>
+<p><code>gpasswd [options]</code></p>
+<ul>
+<li><code>-a user</code> 添加用户user进某个组 </li>
+<li><code>-d user</code> 从指定组中移除用户user</li>
+<li><code>-A user1,user2...</code> 设置有管理权限的用户列表</li>
+</ul>
+<p><code>newgrp</code> 临时切换主组，如果用户本不属于此组，则需要组密码</p>
+<p><strong>更改和查看组成员</strong></p>
+<p><code>groupmems [options] [action]</code></p>
+<p>options</p>
+<ul>
+<li><code>-g</code> 指定某个组<br>action</li>
+<li><code>-a</code> 指定用户加入组</li>
+<li><code>-d</code> 从组中删除用户</li>
+<li><code>-p</code> 从组中清楚所有成员</li>
+<li><code>-l</code> 显示组成员列表</li>
+</ul>
+<p>查看用户所属组列表 <code>groups [OPTION].[USERNAME]</code> </p>
+<h1 id="4-权限管理"><a href="#4-权限管理" class="headerlink" title="4. 权限管理"></a>4. 权限管理</h1><p>权限所有者：所有者权限、所有组权限、路人权限</p>
+<p>权限类型</p>
+<ul>
+<li>文件：read（看文件内容）、write（修改文件内容）、excute（执行）</li>
+<li>文件夹：read（浏览目录下的文件列表）、write（在目录下创建、删除文件）、excute（访问目录下的文件）</li>
+</ul>
+<p>执行权限为目录的基础权限，没有执行权限则无法进入到目录，无法查看目录内容，无法在目录中创建、修改、删除里面的文件，就是什么也做不了</p>
+<p><strong>文件权限</strong></p>
+<p><code>chown [OPTION]... [OWNER][:[GROUP]] FILE...</code>设置文件的所有者</p>
+<ul>
+<li><code>-R</code>递归</li>
+</ul>
+<p><code>chgrp [OPTION].….GROUP FILE...</code> 设置文件的属组信息</p>
+<ul>
+<li><code>-R</code> 递归</li>
+</ul>
+<p><code>chmod who opt per file</code> 模式法设置文件权限，<code>chmod u-w file</code> 给file文件的所有者减去写权限 </p>
+<ul>
+<li>who：<code>u</code>文件所有者、<code>g</code>文件所有组、<code>o</code>路人、<code>a</code>所有人</li>
+<li>opt：<code>+</code>加权限、<code>-</code>减权限、<code>=</code>重新分权限</li>
+<li>per：<code>r</code>读权限、<code>w</code>写权限、<code>x</code>执行权限</li>
+</ul>
+<p><strong>数字法</strong>（八进制数字）设置文件权限 略…</p>
+<h1 id="5-默认权限umask和特殊权限"><a href="#5-默认权限umask和特殊权限" class="headerlink" title="5. 默认权限umask和特殊权限"></a>5. 默认权限umask和特殊权限</h1><p><strong>默认权限umask</strong></p>
+<p><code>umask</code> 命令在创建新文件和目录时自动应用一些权限限制</p>
+<p><code>umask [options] [mask]</code> 其中，mask 是一个八进制数字，用于设置掩码。如果未提供 mask 参数，则 <code>umask</code> 命令将显示当前的掩码设置。掩码是一个八进制数字，表示要从默认权限中屏蔽的权限位</p>
+<ul>
+<li><code>-S</code>模式方式显示</li>
+<li><code>-p</code>输出可被调用</li>
+</ul>
+<p>非特权用户<code>umask</code>是002</p>
+<p>root的<code>umask</code>是022</p>
+<p>全局设置：<code>/etc/bashrc</code> 用户设置：<code>~/. bashrc</code></p>
+<p><strong>Linux文件系统上的特殊权限</strong></p>
+<p>任何一个可执行程序文件能不能启动为进程:取决发起者对程序文件是否拥有执行权限</p>
+<p>启动为进程之后，其进程的属组为原程序文件的属组</p>
+<p>SUID权限，占据属主的执行权限位，作用于二进制可执行文件，该文件在执行时将具有拥有者的权限</p>
+<ul>
+<li>相应权限位显示<code>s</code>说明属主拥有x权限</li>
+<li>相应权限位显示<code>S</code> 说明属主没有x权限</li>
+</ul>
+<p>SGID权限，占据属组的执行权限位，作用于二进制可执行文件，该文件在执行时将具有所属组的权限。作用于目录上，当用户在此目录新建文件时，此新文件的所属组继承目录的所属组</p>
+<ul>
+<li>相应权限位显示<code>s</code> 说明属组拥有x权限</li>
+<li>相应权限位显示<code>S</code> 说明属组没有x权限</li>
+</ul>
+<p>Sticky权限，占据other的执行权限位，作用于目录上，只有目录的所有者、文件的所有者和 root 用户才能删除或重命名目录中的文件。其他用户只能在目录中创建、修改和访问自己的文件，不能删除其他用户的文件</p>
+<ul>
+<li>相应权限位显示<code>t</code> 说明other拥有x权限</li>
+<li>相应权限位显示<code>T</code> 说明other没有x权限</li>
+</ul>
+<p><strong>设定文件特定属性</strong></p>
+<p>更改文件或目录的属性的命令。它用于设置或清除文件系统级别的特殊属性，以增加文件的安全性或保护文件免受意外修改</p>
+<p><code>lsattr</code> 显示特定属性</p>
+<p><code>chattr +i filename</code> 不能删除，改名，更改</p>
+<p><code>chattr -i filename</code> 清除文件的不可修改属性</p>
+<p><code>chattr +a filename</code> 只能追加内容</p>
+<p><code>chattr -a filename</code> 清除文件的只追加属性</p>
+<h1 id="6-ACL权限管理"><a href="#6-ACL权限管理" class="headerlink" title="6. ACL权限管理"></a>6. ACL权限管理</h1><p>传统权限是根据所有者，所属者和其它人这三种进行设置的，这种设置方法非常不灵活</p>
+<p>如要实现除了wang用户不能访问文件file1外，其他用户都可以访问，则传统的权限管理无法实现</p>
+<p><strong>ACL权限</strong></p>
+<p>Access Control List，实现灵活的权限管理。ACL功能允许对文件和目录进行更精细的权限控制，可以对用户或用户组进行个别授权，实现细粒度的访问控制</p>
+<p>CentOS7默认创建的 xfs 和 ext 文件系统具有ACL功能</p>
+<p>CentOS7之前版本，默认手工创建的ext4文件系统无ACL功能，需手动增加</p>
+<p>ACL生效顺序：所有者，自定义用户，自定义组，其他人</p>
+<p><code>getfacl [option] file/directory</code>命令用于获取ACL权限</p>
+<ul>
+<li><code>-R</code>：递归地获取ACL规则，包括文件夹及其内容</li>
+</ul>
+<p><code>setfacl [option] [permissions] file/directory</code>命令用于设置ACL权限</p>
+<ul>
+<li><code>-m</code>：修改ACL规则。</li>
+<li><code>-x</code>：移除ACL规则。</li>
+<li><code>-R</code>：递归地应用ACL规则到文件夹及其内容。</li>
+</ul>
+<p>常用的命令：</p>
+<ul>
+<li><code>setfacl -m u:wang:rwx file|directory</code></li>
+<li><code>setfacl -Rm g:sales:rwX directory</code></li>
+<li><code>setfacl -M file.acl file|directory</code></li>
+<li><code>setfacl -m g:salesgroup:rw file|directory</code></li>
+<li><code>setfacl -m d:u:wang:rx directory</code></li>
+<li><code>setfacl -x u:wang file|directory</code></li>
+<li><code>setfacl -X file.acl directory</code></li>
+</ul>
+<p>getfacl 可看到特殊权限：flags</p>
+<p>通过ACL赋予目录默认x权限，目录内文件也不会继承x权限base ACL不能删除</p>
+<p><code>setfacl -k dir</code> 删除默认ACL权限<br><code>setfacl -b file1</code>清除所有ACL权限</p>
+<p><strong>mask权限</strong></p>
+<p>对最高权限的限制，超过mask权限的其他权限将失效</p>
+<p>ACL文件上的group权限是mask值（自定义用户，自定义组，拥有组的最大权限），而非传统的组权限</p>
+<p>mask只影响除所有者和other的之外的人和组的最大权限</p>
+<p>Mask需要与用户的权限进行逻辑与运算后，才能变成有限的权限(EffectivePermission)</p>
+<p>用户或组的设置必须存在于mask权限设定范围内才会生效</p>
+<p><strong>备份和恢复ACL</strong></p>
+<p>主要的文件操作命令<code>cp</code>和<code>mv</code>都支持ACL，只是<code>cp</code>命令需要加上<code>-p</code>参数。但是<code>tar</code>等常见的备份工具是不会保留目录和文件的ACL信息</p>
+<p>备份<code>getfacl -R /tmp/dir1 &gt; acl.txt</code></p>
+<p>还原<code>setfacl --restore acl.txt</code></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io">robotszx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io/2024/10/28/2023-10-05-Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/">https://szx-zhao.github.io/2024/10/28/2023-10-05-Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://szx-zhao.github.io" target="_blank">机器人之家</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="/img/cover/1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/10/28/2023-09-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2024/10/28/2023-10-11-GitPage%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/4.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/10/28/2023-07-26-CentOS%E5%88%9D%E5%A7%8B%E5%8C%96/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/5.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2023-09-22-Linux%E5%85%A5%E9%97%A8/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/5.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2023-09-24-Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2023-09-26-Linux%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2023-10-12-Linux%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E4%B9%8B%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8CVim/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2023-10-12-Linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">robotszx</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szx-zhao"><i class="fab fa-github"></i><span>前往未知的领域~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/szx-zhao" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1358861771@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">1. 用户和组配置文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">2. 用户管理命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">3. 用户和组管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">4. 权限管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%BB%98%E8%AE%A4%E6%9D%83%E9%99%90umask%E5%92%8C%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90"><span class="toc-number">5.</span> <span class="toc-text">5. 默认权限umask和特殊权限</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-ACL%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">6. ACL权限管理</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-10-17-MySQL%E8%BF%90%E7%BB%B4%E8%84%9A%E6%9C%AC/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-10-17-MySQL%E8%BF%90%E7%BB%B4%E8%84%9A%E6%9C%AC/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.320Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-06-Mobx%E5%85%A5%E9%97%A8/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-06-Mobx%E5%85%A5%E9%97%A8/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-09-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-09-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-11-ping%E6%8E%A2%E6%B5%8B%E7%9A%84%E5%8E%86%E7%A8%8B/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-11-ping%E6%8E%A2%E6%B5%8B%E7%9A%84%E5%8E%86%E7%A8%8B/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-10-Taro%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-10-Taro%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By robotszx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

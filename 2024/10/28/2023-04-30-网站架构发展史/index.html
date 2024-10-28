@@ -1,0 +1,441 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>机器人之家 | 机器人之家</title><meta name="author" content="robotszx"><meta name="copyright" content="robotszx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="网站架构是如何一步步演变为今天的分布式架构的，以及为什么需要分布式架构 1. 架构设计演变过程核心：业务驱动着技术的发展 架构设计的目标：高并发、高可用、可伸缩、可扩展、够安全 几个影响因素：用户量、业务量、数据量、请求量 1.1. 应用与数据一体模式一整个业务应用和数据部分只部署在同一个服务器上 1.2. 应用与数据分离模式实现了硬件层面的分离：业务应用和数据库分别部署在两台不同的服务器上 应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器人之家">
+<meta property="og:url" content="https://szx-zhao.github.io/2024/10/28/2023-04-30-%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E5%8F%91%E5%B1%95%E5%8F%B2/index.html">
+<meta property="og:site_name" content="机器人之家">
+<meta property="og:description" content="网站架构是如何一步步演变为今天的分布式架构的，以及为什么需要分布式架构 1. 架构设计演变过程核心：业务驱动着技术的发展 架构设计的目标：高并发、高可用、可伸缩、可扩展、够安全 几个影响因素：用户量、业务量、数据量、请求量 1.1. 应用与数据一体模式一整个业务应用和数据部分只部署在同一个服务器上 1.2. 应用与数据分离模式实现了硬件层面的分离：业务应用和数据库分别部署在两台不同的服务器上 应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://szx-zhao.github.io/img/cover/2.png">
+<meta property="article:published_time" content="2024-10-28T12:46:25.100Z">
+<meta property="article:modified_time" content="2024-10-17T07:56:20.000Z">
+<meta property="article:author" content="robotszx">
+<meta property="article:tag" content="系统设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://szx-zhao.github.io/img/cover/2.png"><link rel="shortcut icon" href="/img/favicon/%E6%9C%BA%E5%99%A8%E4%BA%BA.png"><link rel="canonical" href="https://szx-zhao.github.io/2024/10/28/2023-04-30-%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E5%8F%91%E5%B1%95%E5%8F%B2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '机器人之家',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-17 15:56:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/2.png')"><nav id="nav"><span id="blog-info"><a href="/" title="机器人之家"><span class="site-name">机器人之家</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-28T12:46:25.100Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-17T07:56:20.000Z" title="更新于 2024-10-17 15:56:20">2024-10-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>网站架构是如何一步步演变为今天的分布式架构的，以及为什么需要分布式架构</p>
+<h1 id="1-架构设计演变过程"><a href="#1-架构设计演变过程" class="headerlink" title="1. 架构设计演变过程"></a>1. 架构设计演变过程</h1><p>核心：业务驱动着技术的发展</p>
+<p>架构设计的目标：高并发、高可用、可伸缩、可扩展、够安全</p>
+<p>几个影响因素：用户量、业务量、数据量、请求量</p>
+<h2 id="1-1-应用与数据一体模式"><a href="#1-1-应用与数据一体模式" class="headerlink" title="1.1. 应用与数据一体模式"></a>1.1. 应用与数据一体模式</h2><p>一整个业务应用和数据部分只部署在同一个服务器上</p>
+<h2 id="1-2-应用与数据分离模式"><a href="#1-2-应用与数据分离模式" class="headerlink" title="1.2. 应用与数据分离模式"></a>1.2. 应用与数据分离模式</h2><p>实现了硬件层面的分离：业务应用和数据库分别部署在两台不同的服务器上</p>
+<p>应用服务器处理大量请求，需要CPU和内存</p>
+<p>数据服务器处理存储和IO操作，需要磁盘性能</p>
+<h2 id="1-3-缓存与性能提升"><a href="#1-3-缓存与性能提升" class="headerlink" title="1.3. 缓存与性能提升"></a>1.3. 缓存与性能提升</h2><p>用户对某些数据访问量特别大时，数据库成为了性能瓶颈，于是使用了缓存技术</p>
+<p><strong>客户端浏览器缓存</strong></p>
+<p>客户端将每次http请求的内容缓存下来，以减小应用服务器压力</p>
+<p><strong>应用服务器缓存</strong></p>
+<p>是进程内缓存，又称托管堆缓存。如 Java中这种缓存存在JVM的托管堆上</p>
+<p><strong>缓存服务器缓存</strong></p>
+<p>专门的缓存服务器，对内存有要求</p>
+<p>所以用户请求访问数据的顺序变为：客户端浏览器缓存—&gt; 应用服务器缓存—&gt; 缓存服务器缓存—&gt; 数据库</p>
+<p>缓存技术的加入提高了响应请求的速度，在可用性方面也有改善，即当数据库暂时出现问题时，缓存服务器中保存的热点数据依然可以满足用户的暂时访问</p>
+<p>总结：以上发展，都是解决访问数据量大的问题</p>
+<h2 id="1-4-服务器集群处理并发"><a href="#1-4-服务器集群处理并发" class="headerlink" title="1.4. 服务器集群处理并发"></a>1.4. 服务器集群处理并发</h2><p>将同一个应用复制到多个服务器上，解决多个用户同时请求的问题</p>
+<p>增加应用服务器的个数，形成服务器集群，在用户请求与应用服务器之间加入负载均衡器以便将用户请求路由到对应的服务器</p>
+<p>采用负载均衡器后，重点关注：负载均衡器的均衡算法，要保证用户请求均匀的分布在不同服务器上、属于同一会话的所有请求都在同一个服务器上处理、能针对不同应用服务器的性能优劣进行动态调整流量</p>
+<p>负载均衡器位于互联网与应用服务器之间，负责用户流量的接入，因此可以对用户的流量进行监控，同时对提出访问请求的用户进行身份和权限验证</p>
+<h2 id="1-5-数据库读写分离"><a href="#1-5-数据库读写分离" class="headerlink" title="1.5. 数据库读写分离"></a>1.5. 数据库读写分离</h2><p>从读写层面对数据库资源进行分配</p>
+<p>缓存的大小有限，非热点数据的读取仍然要在数据库中读取。数据库对于读、写操作的性能是不一样的。写数据时，会造成锁行、锁表，并发写操作会出现排队现象。而读操作可以通过索引、数据库缓存等加快读取速度。所以出现了数据库读写分离</p>
+<p>负责写的数据库需要向负责读的数据库进行数据同步。涉及到的问题：数据同步技术（同步复制技术、异步复制技术、半同步复制技术）、可靠性问题（如果主库挂了，从库如何接替工作，之后主库恢复了，是继续当主库还是当从库，以及主从库如何同步数据）</p>
+<h2 id="1-6-反向代理和CDN"><a href="#1-6-反向代理和CDN" class="headerlink" title="1.6. 反向代理和CDN"></a>1.6. 反向代理和CDN</h2><h3 id="1-6-1-反向代理"><a href="#1-6-1-反向代理" class="headerlink" title="1.6.1. 反向代理"></a>1.6.1. 反向代理</h3><p>相当于外网与内网间的缓冲</p>
+<p>反向代理服务器接收用户请求，然后再将请求转发到内网的应用服务器，全程只对请求进行转发，自身不运行任何应用</p>
+<p>提高了应用服务器的安全性、还可以在互联网与内网间起适配和网速转换的作用</p>
+<h3 id="1-6-2-CDN"><a href="#1-6-2-CDN" class="headerlink" title="1.6.2. CDN"></a>1.6.2. CDN</h3><p>Content Delivery Network，内容分发网络</p>
+<p>用户的请求需要跳转多个互联网中的节点，才能到达应用服务器获取资源，在离用户客户端最近的节点中存放信息，可以减少跳转次数，提高访问速度</p>
+<p>CDN技术减轻了应用服务器的压力、提高了访问速度</p>
+<p>但是CDN只对静态资源有效，且需要定期更新CDN服务器上的资源</p>
+<h2 id="1-7-分布式数据库与分表分库"><a href="#1-7-分布式数据库与分表分库" class="headerlink" title="1.7. 分布式数据库与分表分库"></a>1.7. 分布式数据库与分表分库</h2><p>从业务和数据层面对数据库进行分配</p>
+<h3 id="1-7-1-分布式数据库"><a href="#1-7-1-分布式数据库" class="headerlink" title="1.7.1. 分布式数据库"></a>1.7.1. 分布式数据库</h3><p>将数据库资源分别放在不同的数据库服务器中</p>
+<p>由于数据存储在不同的表、库、服务器上，所以需要引入数据库中间件来实现数据同步，从而消除不同存储载体间的差异</p>
+<p>从软件工程的角度看，数据库中间件的最佳实践：MyCat、Sharding JDBC。此外从数据治理的角度看，需要考虑数据扩容和数据治理的问题</p>
+<h3 id="1-7-2-分表分库"><a href="#1-7-2-分表分库" class="headerlink" title="1.7.2. 分表分库"></a>1.7.2. 分表分库</h3><p><strong>分表</strong></p>
+<p>一个1000万数据的表拆为两个500万的表或者按业务逻辑进行列的拆分，然后通过外键关联到主表，注意被拆分出去的列一定是不常访问的列</p>
+<p><strong>分库</strong></p>
+<p>每个数据库能承受的最大连接数和连接池是有限的。可以让不同业务访问不同数据库</p>
+<h2 id="1-8-业务拆分"><a href="#1-8-业务拆分" class="headerlink" title="1.8. 业务拆分"></a>1.8. 业务拆分</h2><p>将一个应用拆分成多个部署在不同的服务器上，拆分后的各个应用间存在互相调用、通信、协调问题，因此引入队列、服务注册发现、消息中心等中间件</p>
+<p>业务拆分后会形成一个个应用服务，既有基于业务的服务，如 商品服务、订单服务。也有基础服务，如 消息推送、权限验证</p>
+<h2 id="1-9-分布式与微服务"><a href="#1-9-分布式与微服务" class="headerlink" title="1.9. 分布式与微服务"></a>1.9. 分布式与微服务</h2><h3 id="1-9-1-微服务"><a href="#1-9-1-微服务" class="headerlink" title="1.9.1. 微服务"></a>1.9.1. 微服务</h3><p>更小的业务模块、模块间高内聚低耦合、每个模块可以用自己特有的技术实现、模块通过容器部署运行、各模块通过接口和协议实现调用、可以对热点模块进行水平扩展以提高性能</p>
+<h3 id="1-9-2-微服务与分布式架构的区别"><a href="#1-9-2-微服务与分布式架构的区别" class="headerlink" title="1.9.2. 微服务与分布式架构的区别"></a>1.9.2. 微服务与分布式架构的区别</h3><p><strong>拆分目的不同</strong></p>
+<p>分布式是为了解决单体资源有限的问题，将一个应用拆分部署到不同服务器上，以分担高并发的压力</p>
+<p>微服务是对服务组件精细化，目的是更好的解耦，让各个服务间实现高性能、高可用、可伸缩、可扩展</p>
+<p><strong>拆分方式不同</strong></p>
+<p>分布式架构按照业务和技术分类进行拆分，目的是让拆分后的服务负载原来单一服务的业务</p>
+<p>微服务是在分布式的基础上进行更加细致的拆分，将服务拆分为更小的模块，且每个模块可以独立运行</p>
+<p><strong>部署方式不同</strong></p>
+<p>分布式架构通常会把拆分后的各部分部署到不同服务器上</p>
+<p>微服务既可以将不同服务模块部署在不同服务器上，也可以在同一台服务器上部署多个微服务或者同一个微服务的多个水平扩展</p>
+<p>都是基于分布式架构的思想构建的，微服务是分布式架构的进化版，是分布式架构的子集</p>
+<h1 id="2-分布式架构"><a href="#2-分布式架构" class="headerlink" title="2. 分布式架构"></a>2. 分布式架构</h1><h2 id="2-1-分布式架构的组成"><a href="#2-1-分布式架构的组成" class="headerlink" title="2.1. 分布式架构的组成"></a>2.1. 分布式架构的组成</h2><h3 id="2-1-1-客户端"><a href="#2-1-1-客户端" class="headerlink" title="2.1.1. 客户端"></a>2.1.1. 客户端</h3><p>客户端与CDN，涉及客户端对http请求资源的缓存（常见的缓存方式：强制缓存、对比缓存）、CDN的缓存</p>
+<h3 id="2-1-2-负载均衡器（接入层）"><a href="#2-1-2-负载均衡器（接入层）" class="headerlink" title="2.1.2. 负载均衡器（接入层）"></a>2.1.2. 负载均衡器（接入层）</h3><p>客户端请求服务器的过程：</p>
+<ul>
+<li>客户端向DNS服务器发出URL请求</li>
+<li>DNS服务器向客户端返回<strong>应用服务器入口的IP地址</strong>（并非应用服务器本身的IP地址，而是反向代理服务器的IP地址）</li>
+<li>客户端向服务器发送请求</li>
+<li>负载均衡器接收请求后，根据负载均衡算法找到对应的服务器，并将请求转发给服务器</li>
+</ul>
+<h3 id="2-1-3-应用服务器（应用层）"><a href="#2-1-3-应用服务器（应用层）" class="headerlink" title="2.1.3. 应用服务器（应用层）"></a>2.1.3. 应用服务器（应用层）</h3><p>该层包含具体的业务应用服务</p>
+<p><strong>API网关</strong></p>
+<p>API网关和负载均衡器在原理上是相同的，区别是API网关更多是在服务器内部服务之间实现，而负载均衡更多是在互联网与服务器之间实现</p>
+<ul>
+<li><p>路由请求：API网关可以根据请求的URL、HTTP方法、请求头等信息，将请求路由到相应的后端服务上。</p>
+</li>
+<li><p>协议转换：API网关可以将客户端发送的请求转换成后端服务所支持的协议，从而使得不同协议的服务可以无缝地协同工作。</p>
+</li>
+<li><p>负载均衡：API网关可以将请求分发到多个后端服务上，从而实现负载均衡，提高系统的可用性和性能。</p>
+</li>
+<li><p>安全控制：API网关可以对请求进行验证、鉴权、加密等处理，从而保障系统的安全性。</p>
+</li>
+<li><p>监控和日志：API网关可以对请求进行监控、统计和日志记录，从而实现对系统的监控和管理。</p>
+</li>
+<li><p>缓存：API网关可以对请求结果进行缓存，从而减少后端服务的负载，提高系统的性能。</p>
+</li>
+</ul>
+<p><strong>服务协同与通信</strong></p>
+<p>各个服务如 订单服务和支付服务，可能在不同的进程、容器、服务器中，它们之间如何发现对方并通信</p>
+<p>之前的调用模式：一个模块调用另一个模块，需要在代码中耦合，在代码中描述调用条件，并调用对应的方法或模块。属于<strong>进程内调用</strong></p>
+<p>分布式的调用模式：引入注册中心，被调用服务先在注册中心注册自己，调用模块在注册中心获取可用服务列表，找到要调用的模块，进行RPC调用</p>
+<p><strong>分布式互斥</strong></p>
+<p>多个节点同时对共享资源进行访问时，需要保证资源的互斥访问，避免数据的冲突和重复操作</p>
+<p>通过引入Zookeeper的DataNode保证两个进程的访问顺序</p>
+<p><strong>分布式事务</strong></p>
+<p>一个事务要完成的操作，跨越了多个不同的应用（服务器）</p>
+<p>引入事务协调器</p>
+<h3 id="2-1-4-数据服务器（存储层）"><a href="#2-1-4-数据服务器（存储层）" class="headerlink" title="2.1.4. 数据服务器（存储层）"></a>2.1.4. 数据服务器（存储层）</h3><p>分布式存储会将数据存放在不同的数据表、数据库、服务器上面，单体应用是直接访问数据库获取数据，但是分布式数据库获取数据的方式就要复杂一些</p>
+<p><strong>分布式存储</strong></p>
+<p>如 1000万条商品信息，可能分为两张500万条数据表存储。这两个表可能不在同一个数据库、不在同一个服务器。所以需要在代码中建立对两个数据库的连接，分别做两次查询，这样效率低下</p>
+<p>引入数据库中间件MyCat 解决由数据分片带来的数据路由、SQL解析等问题</p>
+<p><strong>读写分离与主从同步</strong></p>
+<h2 id="2-2-分布式架构的特征"><a href="#2-2-分布式架构的特征" class="headerlink" title="2.2. 分布式架构的特征"></a>2.2. 分布式架构的特征</h2><p><strong>分布性</strong></p>
+<p>拆分部署，将服务拆分，并部署在不同的硬件资源上，这些硬件资源可能分布在不同的网络中</p>
+<p>如 电商系统针对客户浏览商品信息并下单这个过程拆分为：商品服务、订单服务、库存服务、支付服务</p>
+<p><strong>自治性</strong></p>
+<p>每个应用服务都有管理和支配自身任务和资源的能力。对内它可以采用自己的技术实现，并不受其他业务的影响</p>
+<p><strong>并行性</strong></p>
+<p>当某个业务是热门业务时，可将该应用进行水平拓展，该应用与拓展出的应用完成的功能相同，它们并行处理大量请求</p>
+<p><strong>全局性</strong></p>
+<p>分散的资源要共同完成一件事，需要沟通和协作</p>
+<h2 id="2-3-分布式架构的问题"><a href="#2-3-分布式架构的问题" class="headerlink" title="2.3. 分布式架构的问题"></a>2.3. 分布式架构的问题</h2><h3 id="2-3-1-应用服务拆分"><a href="#2-3-1-应用服务拆分" class="headerlink" title="2.3.1. 应用服务拆分"></a>2.3.1. 应用服务拆分</h3><p>先划分业务，再针对划分后的业务进行技术实现</p>
+<p>利用领域驱动设计（Domain-Driven Design，DDD）的方法定义领域模型（Domain Model），确定业务和应用服务的边界</p>
+<ul>
+<li>领域驱动设计的模型结构</li>
+<li>分析业务需求形成应用服务</li>
+<li>领域驱动设计分层架构</li>
+</ul>
+<h3 id="2-3-2-分布式调用"><a href="#2-3-2-分布式调用" class="headerlink" title="2.3.2. 分布式调用"></a>2.3.2. 分布式调用</h3><p>分布式调用可总结为两部分：</p>
+<p>第一部分：感知对方，包括负载均衡、API网关、服务注册与发现、消息队列</p>
+<p>第二部分：信息传递，包括RPC、RMI、NIO通信</p>
+<ul>
+<li>负载均衡分类</li>
+<li>API网关</li>
+<li>服务注册与发现</li>
+<li>服务间的远程调用</li>
+</ul>
+<h3 id="2-3-3-分布式协同"><a href="#2-3-3-分布式协同" class="headerlink" title="2.3.3. 分布式协同"></a>2.3.3. 分布式协同</h3><ul>
+<li>分布式系统的特性与互斥问题</li>
+<li>分布式锁</li>
+<li>分布式事务</li>
+<li>分布式选举</li>
+<li>分布式系统的实践</li>
+</ul>
+<h3 id="2-3-4-分布式计算"><a href="#2-3-4-分布式计算" class="headerlink" title="2.3.4. 分布式计算"></a>2.3.4. 分布式计算</h3><p>分布式架构通常采用水平拓展的方式应对海量数据的计算，不同计算场景下的计算方式可分为两种：针对批量静态数据计算的MapReduce 模式、针对动态数据流进行计算的Stream 模式</p>
+<ul>
+<li>MapReduce 模式</li>
+<li>Stream 模式</li>
+</ul>
+<h3 id="2-3-5-分布式存储"><a href="#2-3-5-分布式存储" class="headerlink" title="2.3.5. 分布式存储"></a>2.3.5. 分布式存储</h3><p>从数据类型划分：结构化数据、非结构化数据</p>
+<p>一个好的数据存储方案，需要关注数据均匀性、数据稳定性、节点异构性、故障隔离</p>
+<ul>
+<li>数据存储面临的问题和解决方案</li>
+<li>分布式存储概念</li>
+<li>分布式关系数据库</li>
+<li>分布式缓存</li>
+</ul>
+<h3 id="2-3-6-分布式资源管理与调度"><a href="#2-3-6-分布式资源管理与调度" class="headerlink" title="2.3.6. 分布式资源管理与调度"></a>2.3.6. 分布式资源管理与调度</h3><p>将任务（用户请求）与资源进行匹配</p>
+<ul>
+<li>分布式调度的由来与过程</li>
+<li>资源的划分和调度策略</li>
+<li>分布式调度架构</li>
+<li>资源调度的实践：Kubernetes 的最佳实践</li>
+</ul>
+<h3 id="2-3-7-高性能与可用性"><a href="#2-3-7-高性能与可用性" class="headerlink" title="2.3.7. 高性能与可用性"></a>2.3.7. 高性能与可用性</h3><ul>
+<li>缓存的应用：HTTP缓存、CDN缓存、负载均衡缓存、进程内缓存、分布式缓存</li>
+<li>可用性的策略：请求限流、服务降级、服务熔断</li>
+</ul>
+<h3 id="2-3-8-指标与监控"><a href="#2-3-8-指标与监控" class="headerlink" title="2.3.8. 指标与监控"></a>2.3.8. 指标与监控</h3><ul>
+<li>性能指标：延迟、流量、错误、饱和度</li>
+<li>分布式监控系统</li>
+<li>流行监控系统的最佳实践：Zabbix、Prometheus</li>
+</ul>
+<h1 id="3-架构设计思路和要点"><a href="#3-架构设计思路和要点" class="headerlink" title="3. 架构设计思路和要点"></a>3. 架构设计思路和要点</h1><h2 id="3-1-架构设计思维方式"><a href="#3-1-架构设计思维方式" class="headerlink" title="3.1. 架构设计思维方式"></a>3.1. 架构设计思维方式</h2><h3 id="3-1-1-过程设计模式"><a href="#3-1-1-过程设计模式" class="headerlink" title="3.1.1. 过程设计模式"></a>3.1.1. 过程设计模式</h3><h3 id="3-1-2-协作式设计模式"><a href="#3-1-2-协作式设计模式" class="headerlink" title="3.1.2. 协作式设计模式"></a>3.1.2. 协作式设计模式</h3><h3 id="3-1-3-扩展立方设计模式"><a href="#3-1-3-扩展立方设计模式" class="headerlink" title="3.1.3. 扩展立方设计模式"></a>3.1.3. 扩展立方设计模式</h3><h2 id="3-2-重构"><a href="#3-2-重构" class="headerlink" title="3.2. 重构"></a>3.2. 重构</h2><h3 id="3-2-1-何时重构"><a href="#3-2-1-何时重构" class="headerlink" title="3.2.1. 何时重构"></a>3.2.1. 何时重构</h3><p>频繁使用的组件</p>
+<p>添加功能时</p>
+<p>修复bug时</p>
+<p>审核代码时</p>
+<h3 id="3-2-2-重构难题"><a href="#3-2-2-重构难题" class="headerlink" title="3.2.2. 重构难题"></a>3.2.2. 重构难题</h3><p>数据库重构（在数据库和业务层之间加入一个中间层Mapper，保证业务层的数据结构发生变化时，无需修改数据库的结构）</p>
+<p>接口与实现</p>
+<p>重构不如重写</p>
+<h2 id="3-3-测试"><a href="#3-3-测试" class="headerlink" title="3.3. 测试"></a>3.3. 测试</h2><p><strong>性能测试</strong></p>
+<p>为了得到系统的基准线</p>
+<p><strong>压力测试</strong></p>
+<p>为了得到系统的高压线</p>
+<h1 id="4-职业发展"><a href="#4-职业发展" class="headerlink" title="4. 职业发展"></a>4. 职业发展</h1><h2 id="4-1-技术路线"><a href="#4-1-技术路线" class="headerlink" title="4.1. 技术路线"></a>4.1. 技术路线</h2><p>初级程序员—&gt;中级—&gt;高级—&gt;技术经理</p>
+<h2 id="4-2-管理路线"><a href="#4-2-管理路线" class="headerlink" title="4.2. 管理路线"></a>4.2. 管理路线</h2><p>程序员—&gt;中级工程师—&gt;系统架构师—&gt;项目经理</p>
+<h2 id="4-3-产品路线"><a href="#4-3-产品路线" class="headerlink" title="4.3. 产品路线"></a>4.3. 产品路线</h2><p>程序员—&gt;产品助理—&gt;产品设计师—&gt;产品经理</p>
+<p><strong>参考 《分布式架构原理与实践》崔皓</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io">robotszx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io/2024/10/28/2023-04-30-%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E5%8F%91%E5%B1%95%E5%8F%B2/">https://szx-zhao.github.io/2024/10/28/2023-04-30-%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E5%8F%91%E5%B1%95%E5%8F%B2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://szx-zhao.github.io" target="_blank">机器人之家</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a></div><div class="post_share"><div class="social-share" data-image="/img/cover/2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/10/28/2023-09-21-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E8%BF%B0/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/5.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2024/10/28/2023-06-03-cmd%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/10/28/2022-08-03-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2024-01-08-UML%E8%AE%BE%E8%AE%A1%E5%9B%BE%E5%BD%A2/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2024-01-08-%E5%A6%82%E4%BD%95%E7%94%BB%E5%A5%BD%E5%9B%BE/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2024-01-09-SOLID%E4%BA%94%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2024-01-09-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2024-04-05-%E7%BD%91%E9%A1%B5%E5%85%83%E7%B4%A0%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">robotszx</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szx-zhao"><i class="fab fa-github"></i><span>前往未知的领域~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/szx-zhao" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1358861771@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%BC%94%E5%8F%98%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">1. 架构设计演变过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%BA%94%E7%94%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%B8%80%E4%BD%93%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. 应用与数据一体模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%BA%94%E7%94%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E7%A6%BB%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 应用与数据分离模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E7%BC%93%E5%AD%98%E4%B8%8E%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. 缓存与性能提升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%9B%86%E7%BE%A4%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91"><span class="toc-number">1.4.</span> <span class="toc-text">1.4. 服务器集群处理并发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB"><span class="toc-number">1.5.</span> <span class="toc-text">1.5. 数据库读写分离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8CCDN"><span class="toc-number">1.6.</span> <span class="toc-text">1.6. 反向代理和CDN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-1-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.6.1. 反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-2-CDN"><span class="toc-number">1.6.2.</span> <span class="toc-text">1.6.2. CDN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8E%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93"><span class="toc-number">1.7.</span> <span class="toc-text">1.7. 分布式数据库与分表分库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-1-%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.7.1.</span> <span class="toc-text">1.7.1. 分布式数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-2-%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93"><span class="toc-number">1.7.2.</span> <span class="toc-text">1.7.2. 分表分库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-%E4%B8%9A%E5%8A%A1%E6%8B%86%E5%88%86"><span class="toc-number">1.8.</span> <span class="toc-text">1.8. 业务拆分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.9.</span> <span class="toc-text">1.9. 分布式与微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-1-%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.9.1.</span> <span class="toc-text">1.9.1. 微服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-2-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.9.2.</span> <span class="toc-text">1.9.2. 微服务与分布式架构的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">2. 分布式架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 分布式架构的组成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1. 客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8%EF%BC%88%E6%8E%A5%E5%85%A5%E5%B1%82%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2. 负载均衡器（接入层）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E5%BA%94%E7%94%A8%E5%B1%82%EF%BC%89"><span class="toc-number">2.1.3.</span> <span class="toc-text">2.1.3. 应用服务器（应用层）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-4-%E6%95%B0%E6%8D%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E5%AD%98%E5%82%A8%E5%B1%82%EF%BC%89"><span class="toc-number">2.1.4.</span> <span class="toc-text">2.1.4. 数据服务器（存储层）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E7%9A%84%E7%89%B9%E5%BE%81"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 分布式架构的特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 分布式架构的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E6%8B%86%E5%88%86"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1. 应用服务拆分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E5%88%86%E5%B8%83%E5%BC%8F%E8%B0%83%E7%94%A8"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2. 分布式调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-3-%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E5%90%8C"><span class="toc-number">2.3.3.</span> <span class="toc-text">2.3.3. 分布式协同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-4-%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97"><span class="toc-number">2.3.4.</span> <span class="toc-text">2.3.4. 分布式计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-5-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-number">2.3.5.</span> <span class="toc-text">2.3.5. 分布式存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-6-%E5%88%86%E5%B8%83%E5%BC%8F%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%8E%E8%B0%83%E5%BA%A6"><span class="toc-number">2.3.6.</span> <span class="toc-text">2.3.6. 分布式资源管理与调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-7-%E9%AB%98%E6%80%A7%E8%83%BD%E4%B8%8E%E5%8F%AF%E7%94%A8%E6%80%A7"><span class="toc-number">2.3.7.</span> <span class="toc-text">2.3.7. 高性能与可用性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-8-%E6%8C%87%E6%A0%87%E4%B8%8E%E7%9B%91%E6%8E%A7"><span class="toc-number">2.3.8.</span> <span class="toc-text">2.3.8. 指标与监控</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%92%8C%E8%A6%81%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">3. 架构设计思路和要点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B4%E6%96%B9%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 架构设计思维方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E8%BF%87%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1. 过程设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E5%8D%8F%E4%BD%9C%E5%BC%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2. 协作式设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-%E6%89%A9%E5%B1%95%E7%AB%8B%E6%96%B9%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3. 扩展立方设计模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E9%87%8D%E6%9E%84"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 重构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E4%BD%95%E6%97%B6%E9%87%8D%E6%9E%84"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1. 何时重构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E9%87%8D%E6%9E%84%E9%9A%BE%E9%A2%98"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2. 重构难题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E6%B5%8B%E8%AF%95"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95"><span class="toc-number">4.</span> <span class="toc-text">4. 职业发展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 技术路线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%AE%A1%E7%90%86%E8%B7%AF%E7%BA%BF"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 管理路线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E4%BA%A7%E5%93%81%E8%B7%AF%E7%BA%BF"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. 产品路线</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-10-17-MySQL%E8%BF%90%E7%BB%B4%E8%84%9A%E6%9C%AC/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-10-17-MySQL%E8%BF%90%E7%BB%B4%E8%84%9A%E6%9C%AC/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.320Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-06-Mobx%E5%85%A5%E9%97%A8/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-06-Mobx%E5%85%A5%E9%97%A8/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-09-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-09-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-11-ping%E6%8E%A2%E6%B5%8B%E7%9A%84%E5%8E%86%E7%A8%8B/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-11-ping%E6%8E%A2%E6%B5%8B%E7%9A%84%E5%8E%86%E7%A8%8B/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-10-Taro%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-10-Taro%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By robotszx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

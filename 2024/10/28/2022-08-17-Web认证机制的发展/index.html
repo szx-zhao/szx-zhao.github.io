@@ -1,0 +1,480 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>机器人之家 | 机器人之家</title><meta name="author" content="robotszx"><meta name="copyright" content="robotszx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1. 基本术语1.1. 什么是认证（Authentication）通俗地讲就是验证当前用户的身份，证明你是你自己 互联网中的认证：  用户名密码登录 邮箱发送登录链接 手机号接收验证码  1.2. 什么是授权（Authorization）用户授予第三方应用访问该用户某些资源的权限  你在安装手机应用的时候，APP 会询问是否允许授予权限（访问相册、地理位置等权限） 你在访问微信小程序时，当登录时，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器人之家">
+<meta property="og:url" content="https://szx-zhao.github.io/2024/10/28/2022-08-17-Web%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6%E7%9A%84%E5%8F%91%E5%B1%95/index.html">
+<meta property="og:site_name" content="机器人之家">
+<meta property="og:description" content="1. 基本术语1.1. 什么是认证（Authentication）通俗地讲就是验证当前用户的身份，证明你是你自己 互联网中的认证：  用户名密码登录 邮箱发送登录链接 手机号接收验证码  1.2. 什么是授权（Authorization）用户授予第三方应用访问该用户某些资源的权限  你在安装手机应用的时候，APP 会询问是否允许授予权限（访问相册、地理位置等权限） 你在访问微信小程序时，当登录时，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://szx-zhao.github.io/img/cover/4.png">
+<meta property="article:published_time" content="2024-10-28T12:46:25.037Z">
+<meta property="article:modified_time" content="2024-10-17T07:56:20.000Z">
+<meta property="article:author" content="robotszx">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://szx-zhao.github.io/img/cover/4.png"><link rel="shortcut icon" href="/img/favicon/%E6%9C%BA%E5%99%A8%E4%BA%BA.png"><link rel="canonical" href="https://szx-zhao.github.io/2024/10/28/2022-08-17-Web%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6%E7%9A%84%E5%8F%91%E5%B1%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '机器人之家',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-17 15:56:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/4.png')"><nav id="nav"><span id="blog-info"><a href="/" title="机器人之家"><span class="site-name">机器人之家</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-28T12:46:25.037Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-17T07:56:20.000Z" title="更新于 2024-10-17 15:56:20">2024-10-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-基本术语"><a href="#1-基本术语" class="headerlink" title="1. 基本术语"></a>1. 基本术语</h1><h2 id="1-1-什么是认证（Authentication）"><a href="#1-1-什么是认证（Authentication）" class="headerlink" title="1.1. 什么是认证（Authentication）"></a>1.1. 什么是认证（Authentication）</h2><p>通俗地讲就是<strong>验证当前用户的身份</strong>，证明你是你自己</p>
+<p>互联网中的认证：</p>
+<ul>
+<li>用户名密码登录</li>
+<li>邮箱发送登录链接</li>
+<li>手机号接收验证码</li>
+</ul>
+<h2 id="1-2-什么是授权（Authorization）"><a href="#1-2-什么是授权（Authorization）" class="headerlink" title="1.2. 什么是授权（Authorization）"></a>1.2. 什么是授权（Authorization）</h2><p><strong>用户授予第三方应用访问该用户某些资源的权限</strong></p>
+<ul>
+<li>你在安装手机应用的时候，APP 会询问是否允许授予权限（访问相册、地理位置等权限）</li>
+<li>你在访问微信小程序时，当登录时，小程序会询问是否允许授予权限（获取昵称、头像、地区、性别等个人信息）</li>
+<li>实现授权的方式有：Cookie、Session、token、OAuth</li>
+</ul>
+<h2 id="1-3-什么是凭证（Credentials）"><a href="#1-3-什么是凭证（Credentials）" class="headerlink" title="1.3. 什么是凭证（Credentials）"></a>1.3. 什么是凭证（Credentials）</h2><p><strong>实现认证和授权的前提</strong>是需要一种<strong>媒介（证书）</strong> 来标记访问者的身份</p>
+<ul>
+<li>通过身份证，我们可以办理手机卡/银行卡/个人贷款/交通出行等等，这就是<strong>认证的凭证</strong></li>
+<li>在互联网应用中，一般网站会有两种模式，游客模式和登录模式。游客模式下，可以正常浏览网站上面的文章，一旦想要点赞/收藏/分享文章，就需要登录或者注册账号。当用户登录成功后，服务器会给该用户使用的浏览器颁发一个令牌（token），这个令牌用来表明你的身份，每次浏览器发送请求时会带上这个令牌，就可以使用游客模式下无法使用的功能。</li>
+</ul>
+<h2 id="1-4-什么是单点登录（Single-Sign-On，简称SSO）"><a href="#1-4-什么是单点登录（Single-Sign-On，简称SSO）" class="headerlink" title="1.4. 什么是单点登录（Single Sign-On，简称SSO）"></a>1.4. 什么是单点登录（Single Sign-On，简称SSO）</h2><p>单点登录，是指在多个关联的应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统</p>
+<p>用户在首次登录时进行身份验证，并在成功后获得一个令牌（通常是加密的）。该令牌然后可以被传递给其他关联的应用程序，以证明用户的身份。其他应用程序会接受并验证令牌，从而允许用户访问应用程序。</p>
+<h2 id="1-5-什么是源、站"><a href="#1-5-什么是源、站" class="headerlink" title="1.5. 什么是源、站"></a>1.5. 什么是源、站</h2><p><strong>一个URL的基本组成部分</strong></p>
+<ul>
+<li>协议（Protocol）：协议指定了访问 Web 资源所使用的通信协议，例如 HTTP 或 HTTPS。协议部分以冒号和两个斜杠开头，如 <code>http://</code> 或 <code>https://</code></li>
+<li>域名（Domain Name）：域名是用于标识一个网站或服务器的名称。它可以是一个主机名（如 “example.com”）或者是一个 IP 地址（如 “192.0.2.1”）。域名部分跟在协议之后，并以斜杠或端口号（如果有的话）结尾。</li>
+<li>端口号（Port Number）：端口号是用于标识网络通信中的特定应用程序或服务的数字。它通常是可选的，如果未指定，默认使用协议的默认端口号（例如 HTTP 默认端口号为 80，HTTPS 默认端口号为 443）。 </li>
+<li>路径（Path）：路径表示 Web 服务器上特定资源的位置。它指定了服务器上资源的相对路径或绝对路径。路径部分跟在域名之后，以斜杠开头。</li>
+<li>查询参数（Query Parameters）：查询参数用于向服务器传递附加的数据或参数。它们是由一个问号<code>?</code>开头，然后是一系列的键值对<code>key=value</code>，多个键值对之间使用<code>&amp;</code>分隔。</li>
+<li>锚点（Anchor）：锚点用于指定页面内的特定位置或锚点。它以井号<code>#</code>开头，后面是指向页面内的特定元素的标识符</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.example.com:8080/path/to/resource?param1=value1&amp;param2=value2#section1</span><br></pre></td></tr></table></figure>
+<p><strong>什么是源</strong></p>
+<p>源 = 协议 + 域名 + 端口</p>
+<p>URL<code>https://www.example.com:443/foo</code>，它的源是<code>https://www.example.com:443</code></p>
+<p><strong>什么是站</strong></p>
+<p>站 = 域名的限定子集：部分域名+顶级域名</p>
+<p>URL<code>https://www.example.com:443/foo</code>，它的站是<code>www.example.com</code></p>
+<p><strong>同源、跨源</strong></p>
+<p>协议、域名、端口相同为同源，其他为跨源</p>
+<p><strong>同站、跨站</strong></p>
+<p>属于子域名下的网站是同站，其他为跨站</p>
+<h2 id="1-6-什么是localStorage"><a href="#1-6-什么是localStorage" class="headerlink" title="1.6. 什么是localStorage"></a>1.6. 什么是localStorage</h2><p><code>localStorage</code>是一种在Web浏览器中存储数据的客户端存储机制</p>
+<h1 id="2-Cookie"><a href="#2-Cookie" class="headerlink" title="2. Cookie"></a>2. Cookie</h1><p>背景：<strong>HTTP 是无状态的协议</strong></p>
+<p>Cookie是一种在用户计算机上存储数据的技术，可以用于保存用户身份验证信息。Web应用可以将用户身份验证信息保存在Cookie中，然后在用户下次访问时从Cookie中读取这些信息。随着Web应用的不断发展，Cookie技术也得到了不断升级，例如HttpOnly、Secure、SameSite等。</p>
+<p>Cookie是服务器发送到用户浏览器并保存在用户本地的一小块数据，它会在浏览器下次向同一服务器（相同域名）再发起请求时被携带并发送到服务器上</p>
+<p>Cookie是不可跨域的，每个 Cookie 都会绑定单一的域名，无法在别的域名下获取使用，<strong>一级域名和二级域名之间是允许共享使用的</strong>（<strong>靠的是 domain）</strong></p>
+<p><strong>Cookie 重要的属性</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name=value</strong></td>
+<td>键值对，设置 Cookie 的名称及相对应的值，都必须是<strong>字符串类型</strong>  <br>- 如果值为 Unicode 字符，则需要为字符编码（如utf-8）。  <br>- 如果值为二进制数据，则需要使用 BASE64 编码。</td>
+</tr>
+<tr>
+<td><strong>domain</strong></td>
+<td>指定 Cookie 所属域名，默认是当前域名</td>
+</tr>
+<tr>
+<td><strong>path</strong></td>
+<td><strong>指定 Cookie 在哪个路径（路由）下生效，默认是 ‘/‘</strong>。  <br>如果设置为 <code>/abc</code>，则只有 <code>/abc</code> 下的路由可以访问到该 Cookie</td>
+</tr>
+<tr>
+<td><strong>maxAge</strong></td>
+<td>Cookie 失效的时间，单位秒。如果为整数，则该 Cookie 在 maxAge 秒后失效。如果为负数，该 Cookie 为临时 Cookie ，关闭浏览器即失效，浏览器也不会以任何形式保存该 Cookie 。如果为 0，表示删除该 Cookie 。默认为 -1。  <br>- <strong>比 expires 好用</strong>。</td>
+</tr>
+<tr>
+<td><strong>expires</strong></td>
+<td>HTTP响应头中的 “Expires” 字段，用于指定客户端缓存的过期时间，在设置的某个时间点后该 Cookie 就会失效。  <br>一般浏览器的 Cookie 都是默认储存的，当关闭浏览器结束这个会话的时候，这个 Cookie 也就会被删除</td>
+</tr>
+<tr>
+<td><strong>secure</strong></td>
+<td>该 Cookie 是否仅被使用安全协议传输。安全协议有 HTTPS，SSL等，在网络上传输数据之前先将数据加密。默认为false。  <br>当 secure 值为 true 时，Cookie 在 HTTP 中是无效，在 HTTPS 中才有效。</td>
+</tr>
+<tr>
+<td><strong>httpOnly</strong></td>
+<td><strong>如果给某个 Cookie 设置了 httpOnly 属性，则无法通过 JS 脚本 读取到该 Cookie 的信息，但还是能通过 Application 中手动修改 Cookie，所以只是在一定程度上可以防止 XSS 攻击，不是绝对的安全</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>使用 cookie 时需要考虑的问题</strong></p>
+<ul>
+<li>因为存储在客户端，容易被客户端篡改，使用前需要验证合法性</li>
+<li>不要存储敏感数据，比如用户密码，账户余额</li>
+<li>使用 httpOnly 在一定程度上提高安全性</li>
+<li>尽量减少 cookie 的体积，能存储的数据量不能超过 4kb</li>
+<li>设置正确的 domain 和 path，减少数据传输</li>
+<li><strong>cookie 无法跨域</strong></li>
+<li>一个浏览器针对一个网站最多存 20 个Cookie，浏览器一般只允许存放 300 个Cookie</li>
+<li><strong>移动端对 cookie 的支持不是很好，而 session 需要基于 cookie 实现，所以移动端常用的是 token</strong></li>
+</ul>
+<h1 id="3-Session"><a href="#3-Session" class="headerlink" title="3. Session"></a>3. Session</h1><p>Session是一种在服务器端存储数据的技术，用于保存用户身份验证信息。Web应用可以在用户登录时为其创建一个Session，当用户访问其他页面时，服务器根据由Cookie携带的<code>Session_id</code>从对应的Session中读取用户身份验证信息。Session技术的优点是可以避免用户身份验证信息被窃取，但是它需要占用服务器端的资源。</p>
+<p>Session 是另一种记录服务器和客户端会话状态的机制</p>
+<p>Session 是基于 cookie 实现的，Session 存储在服务器端，SessionId 会被存储到客户端的cookie 中</p>
+<p><strong>Session 认证流程</strong></p>
+<ul>
+<li>用户第一次请求服务器的时候，服务器根据用户提交的相关信息，创建对应的 Session</li>
+<li>服务器的响应中将此 Session 的唯一标识信息 SessionID 返回给浏览器</li>
+<li>浏览器接收到服务器返回的 SessionID 信息后，会将此信息存入到 Cookie 中，同时 Cookie 记录此 SessionID 属于哪个域名</li>
+<li>当用户第二次访问服务器的时候，请求会自动判断此域名下是否存在 Cookie 信息，如果存在自动将 Cookie 信息也发送给服务端，服务端会从 Cookie 中获取 SessionID，再根据 SessionID 查找对应的 Session 信息，如果没有找到说明用户没有登录或者登录失效，如果找到 Session 证明用户已经登录可执行后面操作</li>
+</ul>
+<p><strong>使用 session 时需要考虑的问题</strong></p>
+<ul>
+<li>将 session 存储在服务器里面，当用户同时在线量比较多时，这些 session 会占据较多的内存，需要在服务端定期的去清理过期的 session</li>
+<li>当网站采用<strong>集群部署</strong>的时候，会遇到多台 web 服务器之间如何做 session 共享的问题。因为 session 是由单个服务器创建的，但是处理用户请求的服务器不一定是那个创建 session 的服务器，那么该服务器就无法拿到之前已经放入到 session 中的登录凭证之类的信息了。</li>
+<li>当多个应用要共享 session 时，除了以上问题，还会遇到跨域问题，因为不同的应用可能部署的主机不一样，需要在各个应用做好 cookie 跨域的处理。</li>
+<li><strong>sessionId 是存储在 cookie 中的，假如浏览器禁止 cookie 或不支持 cookie 怎么办？</strong> 一般会把 sessionId 跟在 url 参数后面即重写 url，所以 session 不一定非得需要靠 cookie 实现</li>
+<li><strong>移动端对 cookie 的支持不是很好，而 session 需要基于 cookie 实现，所以移动端常用的是 token</strong></li>
+</ul>
+<h1 id="4-Session和Cookie的对比"><a href="#4-Session和Cookie的对比" class="headerlink" title="4. Session和Cookie的对比"></a>4. Session和Cookie的对比</h1><p><strong>产生</strong></p>
+<p>Session和Cookie都是由服务器生成的，都是用来存储特定的值（键值对应）</p>
+<p><strong>SessionID</strong></p>
+<p>SessionID是服务器用来识别、操作存储Session值的对象的。在服务器端，Session的存储方式有文件方式、数据库方式，SessionID就是用来识别这个文件的（文件名相关)、识别数据库的某一条记录。SessionID并不是Session值。</p>
+<p><strong>存取值的类型</strong></p>
+<p>Cookie 只支持存字符串数据，想要设置其他类型的数据，需要将其转换成字符串，Session 可以存任意数据类型。</p>
+<p><strong>存储大小</strong> </p>
+<p>单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie，但是当访问量过多，会占用过多的服务器资源。</p>
+<p><strong>生命周期</strong></p>
+<p>客户端（浏览器）在发送请求的时候，会自动将存活、可用的Cookie封装在请求头中和请求一起发送</p>
+<p>Cookie的生命周期由过期时间和持久性两个因素决定。过期时间是指Cookie在用户计算机上保留的时间，持久性是指Cookie是否在浏览器关闭后仍然保留。如果没有指定过期时间和持久性，则Cookie的生命周期默认为会话级别，即在用户关闭浏览器时自动删除。</p>
+<p>Session的生命周期由服务器端的会话管理器控制，一般情况下，Session会在用户登录时创建，并在用户注销或超时后销毁。</p>
+<p><strong>作用域</strong></p>
+<p>Cookie和Session都是有其作用域的</p>
+<p>Cookie的作用域由域名、路径和协议三个因素决定。只有在Cookie的作用域内才能被浏览器发送到服务器。</p>
+<p>Session的作用域仅限于服务器端，客户端无法直接访问Session。Web应用可以通过在Cookie中保存Session ID的方式来跨请求管理Session。</p>
+<p><strong>安全性</strong></p>
+<p>Cookie是存储在客户端的，是可见的，是可以改变的。</p>
+<p>Session是存储在服务器端的，是不可见的，是不可改变的。</p>
+<h1 id="5-Token"><a href="#5-Token" class="headerlink" title="5. Token"></a>5. Token</h1><p>Token是一种短暂的、可撤销的凭证，用于验证用户身份。Web应用可以在用户登录时为其创建一个Token，并在每次请求中将Token传递给服务器，服务器端可以通过验证Token的合法性来验证用户身份。Token技术的优点是可以避免服务器端存储用户身份验证信息，从而减轻服务器端的负担。</p>
+<p>可以把Token 放在Cookie里面自动发送，但是这样不能跨域。更好的做法是放在HTTP请求的头信息Authorization字段里面，单独发送</p>
+<p>Token 一旦生成无法让其失效，必须等到其过期才行</p>
+<p>简单 token 的组成： uid（用户唯一的身份标识）、time（当前时间的时间戳）、sign（签名，token 的前几位以哈希算法压缩成的一定长度的十六进制字符串）</p>
+<p><strong>token 的身份验证流程</strong></p>
+<ul>
+<li>客户端输入用户名和密码并请求登录</li>
+<li>服务端收到请求，去验证用户名与密码</li>
+<li>验证成功后，服务端会签发一个 token 并把这个 token 发送给客户端</li>
+<li>客户端收到 token 以后，会把它存储起来，比如放在 cookie 里或者 localStorage 里</li>
+<li>客户端每次向服务端请求资源的时候需要带着服务端签发的 token</li>
+<li>服务端收到请求，然后去验证客户端请求里面带着的 token ，如果验证成功，就向客户端返回请求的数据</li>
+</ul>
+<p><strong>使用 token 时需要考虑的问题</strong></p>
+<ul>
+<li>如果你认为用数据库来存储 token 会导致查询时间太长，可以选择放在内存当中。比如 redis 很适合你对 token 查询的需求。</li>
+<li><strong>token 完全由应用管理，所以它可以避开同源策略</strong></li>
+<li><strong>token 可以避免 CSRF 攻击（因为不需要 cookie 了）</strong></li>
+<li><strong>移动端对 cookie 的支持不是很好，而 session 需要基于 cookie 实现，所以移动端常用的是 token</strong></li>
+</ul>
+<h1 id="6-Token-和-Session-的对比"><a href="#6-Token-和-Session-的对比" class="headerlink" title="6. Token 和 Session 的对比"></a>6. Token 和 Session 的对比</h1><p>Session 只提供一种简单的认证，即只要有此 SessionID ，即认为有此 User 的全部权利</p>
+<p>Token 提供的是 认证 和 授权 ，认证是针对用户，授权是针对 应用 。其目的是让某 应用 有权利访问某用户的信息</p>
+<p><strong>如果你的用户数据可能需要和第三方共享，或者允许第三方调用 API 接口，用 Token 。如果永远只是自己的网站，自己的 App，用什么就无所谓了。</strong></p>
+<h1 id="7-Token-缺点"><a href="#7-Token-缺点" class="headerlink" title="7. Token 缺点"></a>7. Token 缺点</h1><p><strong>Token 太长了</strong></p>
+<p>Token 是 header, payload 编码后的样式，所以一般要比 SessionId 长很多，很有可能超出 Cookie 的大小限制（Cookie 一般有大小限制的，如 4kb）</p>
+<p><strong>不安全</strong></p>
+<p>Token 是存在浏览器的，它太长放在 Cookie 里可能导致 Cookie 超限，那就只好放在 local storage 里，这样会造成安全隐患，因为 local storage 这类的本地存储是可以被 JS 直接读取的，另外由上文也提到，Token 一旦生成无法让其失效，必须等到其过期才行，这样的话如果服务端检测到了一个安全威胁，也无法使相关的Token 失效。</p>
+<p><strong>所以 token 更适合一次性的命令认证，设置一个比较短的有效期</strong></p>
+<h1 id="8-CSRF-攻击"><a href="#8-CSRF-攻击" class="headerlink" title="8. CSRF 攻击"></a>8. CSRF 攻击</h1><p>攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并运行一些操作（如发邮件，发消息，甚至财产操作如转账和购买商品）。由于浏览器曾经认证过（Cookie 里带来 SessionId 等身份认证的信息），所以被访问的网站会认为是真正的用户操作而去运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">比如用户登录了某银行网站（假设为 http://www.examplebank.com/，并且转账地址为 http://www.examplebank.com/withdraw?amount=1000&amp;transferTo=PayeeName），登录后 Cookie 里会包含登录用户的 Sessionid，攻击者可以在另一个网站上放置如下代码</span><br><span class="line">&lt;img src=&quot;http://www.examplebank.com/withdraw?account=Alice&amp;amount=1000&amp;for=Badman&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>那么如果正常的用户误点了上面这张图片，<strong>由于相同域名的请求会自动带上 Cookie</strong>，而 Cookie 里带有正常登录用户的 Sessionid，类似上面这样的转账操作在 server 就会成功，会造成极大的安全风险</p>
+<p><strong>CSRF 攻击的根本原因在于对于同样域名的每个请求来说，它的 Cookie 都会被自动带上，这个是浏览器的机制决定的</strong></p>
+<h1 id="9-JWT"><a href="#9-JWT" class="headerlink" title="9. JWT"></a>9. JWT</h1><p>JSON Web Token（简称 JWT）是目前最流行的<strong>跨域认证</strong>解决方案。是一种<strong>认证授权机制</strong></p>
+<p>JWT 一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源。比如用在用户登录上。</p>
+<p>可以使用 HMAC 算法或者是 RSA 的公/私秘钥对 JWT 进行签名。因为数字签名的存在，这些传递的信息是可信的</p>
+<p><strong>JWT 认证流程</strong></p>
+<ul>
+<li>用户输入用户名/密码登录，服务端认证成功后，会返回给客户端一个 JWT</li>
+<li>客户端将 token 保存到本地（通常使用 localstorage，也可以使用 cookie）</li>
+<li>当用户希望访问一个受保护的路由或者资源的时候，需要请求头的 Authorization 字段中使用Bearer 模式添加 JWT，其内容看起来是下面这样<code>Authorization: Bearer &lt;token&gt;</code></li>
+<li>服务端的保护路由将会检查请求头 Authorization 中的 JWT 信息，如果合法，则允许用户的行为</li>
+<li>因为 JWT 是自包含的（内部包含了一些会话信息），因此减少了需要查询数据库的需要</li>
+<li>因为 JWT 并不使用 Cookie 的，所以你可以使用任何域名提供你的 API 服务而不需要担心跨域资源共享问题（CORS）</li>
+<li>因为用户的状态不再存储在服务端的内存中，所以这是一种无状态的认证机制</li>
+</ul>
+<p><strong>JWT 的使用方式</strong></p>
+<ul>
+<li>方式一：放在 HTTP 请求头信息的 Authorization 字段里，使用 Bearer 模式添加 JWT</li>
+<li>方式二：跨域的时候，可以把 JWT 放在 POST 请求的数据体里</li>
+<li>方式三：通过 URL 传输<code>http://www.example.com/user?token=xxx</code></li>
+</ul>
+<p><strong>使用 JWT 时需要考虑的问题</strong></p>
+<ul>
+<li>因为 JWT 并不依赖 Cookie 的，所以你可以使用任何域名提供你的 API 服务而不需要担心跨域资源共享问题（CORS）</li>
+<li>JWT 默认是不加密，但也是可以加密的。生成原始 Token 以后，可以用密钥再加密一次。</li>
+<li>JWT 不加密的情况下，不能将秘密数据写入 JWT。</li>
+<li>JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。</li>
+<li>JWT 最大的优势是服务器不再需要存储 Session，使得服务器认证鉴权业务可以方便扩展。但这也是 JWT 最大的缺点：由于服务器不需要存储 Session 状态，因此使用过程中无法废弃某个 Token 或者更改 Token 的权限。也就是说一旦 JWT 签发了，到期之前就会始终有效，除非服务器部署额外的逻辑。</li>
+<li>JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。为了减少盗用，JWT的有效期应该设置得比较短。对于一些比较重要的权限，使用时应该再次对用户进行认证。</li>
+<li>JWT 适合一次性的命令认证，颁发一个有效期极短的 JWT，即使暴露了危险也很小，由于每次操作都会生成新的 JWT，因此也没必要保存 JWT，真正实现无状态。</li>
+<li>为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。</li>
+</ul>
+<h1 id="10-Token-和-JWT-的区别"><a href="#10-Token-和-JWT-的区别" class="headerlink" title="10. Token 和 JWT 的区别"></a>10. Token 和 JWT 的区别</h1><p><strong>相同：</strong></p>
+<ul>
+<li>都是访问资源的令牌</li>
+<li>都可以记录用户的信息</li>
+<li>都是使服务端无状态化</li>
+<li>都是只有验证成功后，客户端才能访问服务端上受保护的资源</li>
+</ul>
+<p><strong>区别：</strong></p>
+<ul>
+<li>Token：服务端验证客户端发送过来的 Token 时，还需要查询数据库获取用户信息，然后验证 Token 是否有效。</li>
+<li>JWT： 将 Token 和 Payload 加密后存储于客户端，服务端只需要使用密钥解密进行校验（校验也是 JWT 自己实现的）即可，不需要查询或者减少查询数据库，因为 JWT 自包含了用户信息和加密的数据。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io">robotszx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io/2024/10/28/2022-08-17-Web%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6%E7%9A%84%E5%8F%91%E5%B1%95/">https://szx-zhao.github.io/2024/10/28/2022-08-17-Web%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6%E7%9A%84%E5%8F%91%E5%B1%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://szx-zhao.github.io" target="_blank">机器人之家</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Web/">Web</a></div><div class="post_share"><div class="social-share" data-image="/img/cover/4.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/10/28/2022-08-03-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2024/10/28/2022-09-12-C/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/10/28/2023-10-12-JWT%E8%AF%A6%E8%A7%A3/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">robotszx</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szx-zhao"><i class="fab fa-github"></i><span>前往未知的领域~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/szx-zhao" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1358861771@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.</span> <span class="toc-text">1. 基本术语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A4%E8%AF%81%EF%BC%88Authentication%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. 什么是认证（Authentication）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%88%E6%9D%83%EF%BC%88Authorization%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 什么是授权（Authorization）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%AD%E8%AF%81%EF%BC%88Credentials%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. 什么是凭证（Credentials）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88Single-Sign-On%EF%BC%8C%E7%AE%80%E7%A7%B0SSO%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">1.4. 什么是单点登录（Single Sign-On，简称SSO）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E4%BB%80%E4%B9%88%E6%98%AF%E6%BA%90%E3%80%81%E7%AB%99"><span class="toc-number">1.5.</span> <span class="toc-text">1.5. 什么是源、站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-%E4%BB%80%E4%B9%88%E6%98%AFlocalStorage"><span class="toc-number">1.6.</span> <span class="toc-text">1.6. 什么是localStorage</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Cookie"><span class="toc-number">2.</span> <span class="toc-text">2. Cookie</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Session"><span class="toc-number">3.</span> <span class="toc-text">3. Session</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Session%E5%92%8CCookie%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">4.</span> <span class="toc-text">4. Session和Cookie的对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Token"><span class="toc-number">5.</span> <span class="toc-text">5. Token</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Token-%E5%92%8C-Session-%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">6.</span> <span class="toc-text">6. Token 和 Session 的对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-Token-%E7%BC%BA%E7%82%B9"><span class="toc-number">7.</span> <span class="toc-text">7. Token 缺点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-CSRF-%E6%94%BB%E5%87%BB"><span class="toc-number">8.</span> <span class="toc-text">8. CSRF 攻击</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-JWT"><span class="toc-number">9.</span> <span class="toc-text">9. JWT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-Token-%E5%92%8C-JWT-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">10.</span> <span class="toc-text">10. Token 和 JWT 的区别</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-10-17-MySQL%E8%BF%90%E7%BB%B4%E8%84%9A%E6%9C%AC/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-10-17-MySQL%E8%BF%90%E7%BB%B4%E8%84%9A%E6%9C%AC/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.320Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-06-Mobx%E5%85%A5%E9%97%A8/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-06-Mobx%E5%85%A5%E9%97%A8/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-09-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-09-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-11-ping%E6%8E%A2%E6%B5%8B%E7%9A%84%E5%8E%86%E7%A8%8B/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-11-ping%E6%8E%A2%E6%B5%8B%E7%9A%84%E5%8E%86%E7%A8%8B/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-10-Taro%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-10-Taro%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By robotszx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

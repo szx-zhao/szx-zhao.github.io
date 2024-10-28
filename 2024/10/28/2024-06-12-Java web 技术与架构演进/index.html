@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>机器人之家 | 机器人之家</title><meta name="author" content="robotszx"><meta name="copyright" content="robotszx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="123456789101112131415flowchart LR	0j2qp65qqvbdh1554ogjmi30po[&quot;Java web 技术与架构演进&quot;] --&gt; 4e1q0k9lsd6av841kp12f7bic6[&quot;Servlet&quot;]	0j2qp65qqvbdh1554ogjmi30po --&gt; 0cblpslmhsgi0eeg5nit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器人之家">
+<meta property="og:url" content="https://szx-zhao.github.io/2024/10/28/2024-06-12-Java%20web%20%E6%8A%80%E6%9C%AF%E4%B8%8E%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/index.html">
+<meta property="og:site_name" content="机器人之家">
+<meta property="og:description" content="123456789101112131415flowchart LR	0j2qp65qqvbdh1554ogjmi30po[&quot;Java web 技术与架构演进&quot;] --&gt; 4e1q0k9lsd6av841kp12f7bic6[&quot;Servlet&quot;]	0j2qp65qqvbdh1554ogjmi30po --&gt; 0cblpslmhsgi0eeg5nit">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://szx-zhao.github.io/img/cover/3.png">
+<meta property="article:published_time" content="2024-10-28T12:46:25.242Z">
+<meta property="article:modified_time" content="2024-10-17T07:56:20.000Z">
+<meta property="article:author" content="robotszx">
+<meta property="article:tag" content="JavaWeb">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://szx-zhao.github.io/img/cover/3.png"><link rel="shortcut icon" href="/img/favicon/%E6%9C%BA%E5%99%A8%E4%BA%BA.png"><link rel="canonical" href="https://szx-zhao.github.io/2024/10/28/2024-06-12-Java%20web%20%E6%8A%80%E6%9C%AF%E4%B8%8E%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '机器人之家',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-17 15:56:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/3.png')"><nav id="nav"><span id="blog-info"><a href="/" title="机器人之家"><span class="site-name">机器人之家</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-28T12:46:25.242Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-17T07:56:20.000Z" title="更新于 2024-10-17 15:56:20">2024-10-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">	0j2qp65qqvbdh1554ogjmi30po[&quot;Java web 技术与架构演进&quot;] --&gt; 4e1q0k9lsd6av841kp12f7bic6[&quot;Servlet&quot;]</span><br><span class="line">	0j2qp65qqvbdh1554ogjmi30po --&gt; 0cblpslmhsgi0eeg5nitvkk8uq[&quot;JSP(Java Server Pages)&quot;]</span><br><span class="line">	0cblpslmhsgi0eeg5nitvkk8uq --&gt; 52hgca1ge7tofdpbeemf5m9f23[&quot;JSP Model1&quot;]</span><br><span class="line">	52hgca1ge7tofdpbeemf5m9f23 --&gt; 5ibcln5atnn1rf1k6j1cum2aks[&quot;第一代&quot;]</span><br><span class="line">	52hgca1ge7tofdpbeemf5m9f23 --&gt; 26udhcbdsoafe0hl5a8kec8d1a[&quot;第二代&quot;]</span><br><span class="line">	0cblpslmhsgi0eeg5nitvkk8uq --&gt; 1vjmf115d2q7g6i6457potk504[&quot;JSP Model2&quot;]</span><br><span class="line">	0j2qp65qqvbdh1554ogjmi30po --&gt; 21nka23t8r0v52qoqksjh5b50c[&quot;Struts2&quot;]</span><br><span class="line">	21nka23t8r0v52qoqksjh5b50c --&gt; 0fgfrktqjuqpoi0mn18o1jngon[&quot;形成Javaweb 经典三层架构&quot;]</span><br><span class="line">	0j2qp65qqvbdh1554ogjmi30po --&gt; 53po8qamnm15v1kq8dmh0e3t7p[&quot;Hibernate 框架&quot;]</span><br><span class="line">	0j2qp65qqvbdh1554ogjmi30po --&gt; 2u26u503i1k38m7fo92h2d2dvv[&quot;Spring 框架&quot;]</span><br><span class="line">	0j2qp65qqvbdh1554ogjmi30po --&gt; 0m87forg6qikoktvhbavs6rie8[&quot;SSH(Spring-Struts-Hibernate)框架&quot;]</span><br><span class="line">	0j2qp65qqvbdh1554ogjmi30po --&gt; 17dgojqvhd90m42qc3mn4bs4v1[&quot;SpringMVC&quot;]</span><br><span class="line">	0j2qp65qqvbdh1554ogjmi30po --&gt; 7kdo74unful149lpr50jh35oc1[&quot;SSM(Spring-SpringMVC-MyBatis)框架&quot;]</span><br><span class="line">	0j2qp65qqvbdh1554ogjmi30po --&gt; 5ahnl83fhs2pos9k0lk2nvfh1s[&quot;SpringBoot&quot;]</span><br></pre></td></tr></table></figure>
+<h1 id="1-Servlet"><a href="#1-Servlet" class="headerlink" title="1. Servlet"></a>1. Servlet</h1><ul>
+<li>Servlet 技术诞生用于使 web 服务器能够提供静态资源之外的动态内容，是扩展了 Web 服务器能力的 Java 软件组件。<br>○ Servlet 的运行依赖于 Servlet 容器（如 Tomcat、Jetty）。<br>○ Servlet 容器提供了遵循 Servlet 规范的接口，开发者实现自 Servlet 接口的 Java 类就称为一个 Servlet，在 Servlet 中定义用于响应请求的具体动态内容。<br>○ 在 Servlet 容器的配置中指定请求 URL 与处理请求的 Servlet 的映射关系，如 Tomcat 配置文件位于”/WEB-INF/web.xml”，映射关系内容示例：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; ...&gt;</span><br><span class="line">&lt;web-app ...&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;servlet1&lt;/servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;servletClass1&lt;/servlet-class&gt;</span><br><span class="line">    &lt;/servlet&gt;</span><br><span class="line"></span><br><span class="line">    &lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;servlet2&lt;/servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;servletClass2&lt;/servlet-class&gt;</span><br><span class="line">    &lt;/servlet&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;servlet1&lt;/servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;/url1&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;servlet2&lt;/servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;/url2&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/servlet-mapping&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure>
+<p>○ Servlet 处理客户端请求流程：<br>（1）客户端请求到达 Servlet 容器，Servlet 容器解析请求信息创建相应的”HttpServletRequest”和”HttpServletResponse”对象。<br>（2）Servlet 容器根据请求 URL 映射配置创建或找到对应的 Servlet 实例，创建一个线程并传入“HttpServletRequest”与“HttpServletResponse”对象，再调用 Servlet 实例的 service()方法。<br>（3）Servlet 对象的 doGet()、doPost()等方法处理请求，返回内容交由 Servlet 容器组装成 HTTP 格式返回给客户端。<br>○demo 地址：<a target="_blank" rel="noopener" href="https://github.com/congzhou09/servlet_maven_demo">servlet_maven_demo</a></p>
+<h1 id="2-JSP-Java-Server-Pages"><a href="#2-JSP-Java-Server-Pages" class="headerlink" title="2. JSP(Java Server Pages)"></a>2. JSP(Java Server Pages)</h1><p>○ 由于 Servlet 编写前端内容太繁琐，sun 公司又推出了 JSP。<br>○ JSP 文件放到 Servlet 容器的 web 目录下。<br>○ 客户端可直接请求 JSP 文件，得到的内容不是 JSP 原文件而是其中 Java 代码被执行后的内容。<br>○ Servlet 处理请求的返回内容也可以是一个 JSP 文件。<br>○ demo 地址同上：<a target="_blank" rel="noopener" href="https://github.com/congzhou09/servlet_maven_demo">servlet_maven_demo</a></p>
+<h1 id="3-JSP-Model1-第一代"><a href="#3-JSP-Model1-第一代" class="headerlink" title="3. JSP Model1 第一代"></a>3. JSP Model1 第一代</h1><p>○ JavaWeb 早期的模型，它适合小型 Web 项目，开发成本低。服务器端只有 JSP 页面，所有的操作都在 JSP 页面中，连访问数据库的 API 也在 JSP 页面中完成。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="F:\笔记\博客\文章图片\jsp_model1_1.png" alt="img"></p>
+<h1 id="4-JSP-Model1-第二代"><a href="#4-JSP-Model1-第二代" class="headerlink" title="4. JSP Model1 第二代"></a>4. JSP Model1 第二代</h1><p>○ 将业务逻辑内容放到 JavaBean，JSP 页面负责显示以及请求调度。虽然第二代比第一代好了些，但 JSP 仍然做了过多的工作，它耦合了视图工作和请求调度（控制器）的工作。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="F:\笔记\博客\文章图片\jsp_model1_2.png" alt="img"></p>
+<h1 id="5-JSP-Model2"><a href="#5-JSP-Model2" class="headerlink" title="5. JSP Model2"></a>5. JSP Model2</h1><p>○ Servlet 与 JSP 之间可以共享数据，JSP Model2 模式将 Servlet 与 JSP 结合使用，做了初级的 MVC 分层：<br>（1）JSP：视图层，用来与用户打交道。负责接收用户的数据，以及显示数据给用户。<br>（2）Servlet：控制层，负责找到合适的模型对象来处理业务逻辑，根据处理结果找到合适的 JSP 页面对用户进行响应。<br>（3）JavaBean：模型层，完成具体的业务数据处理工作。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="F:\笔记\博客\文章图片\jsp_model2.png" alt="img"></p>
+<h1 id="6-Struts-框架（以-Struts2-为准）"><a href="#6-Struts-框架（以-Struts2-为准）" class="headerlink" title="6. Struts 框架（以 Struts2 为准）"></a>6. Struts 框架（以 Struts2 为准）</h1><p>◇ Struts 目的是使视图和业务逻辑清晰的分离，提高开发效率，显著特点如下：<br>（1）提供 Action 机制来处理业务逻辑。<br>（2）提供了一套可在 JSP 中使用的标签，方便在 Action 与 JSP 之间共享数据。<br>◇ Struts 提供的 action 机制的实现基于 Servlet 的 Filter，相当于扩展了的 Filter，也就是 Filter 是 Struts 框架的入口，Struts 根据客户端请求及映射配置(struts-config.xml)实例化对应的 action 和调用其方法处理业务与数据，根据方法返回值及映射配置跳转到对应 JSP 页面或其他网络资源或另一个 action。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="F:\笔记\博客\文章图片\struts_workflow.png" alt="img"></p>
+<p>◇ action 相对于 Servlet 的优点：<br>（1）action 不再继承于 Servlet 从而使业务处理与 Servlet API 解耦更易于测试。<br>（2）每个请求对应一个 action 实例，相比 Servlet 的同一个 URL 的多个请求共用一个 Servlet 对象是线程安全的。<br>◇ 互联网曾经出现很多<em>.do 网址的 JSP 网站而不是</em>.jsp，这通常由于每个.do 对应一个 action，当 action 处理完一系列的业务逻辑后，即使 forward 到 JSP 页面返回给浏览器，浏览器的地址栏中显示的仍然是最初请求的*.do 的 action 地址。<br>◇ demo 地址：<a target="_blank" rel="noopener" href="https://github.com/congzhou09/struts2_maven_demo">struts2_maven_demo</a></p>
+<h1 id="7-Javaweb-经典三层架构"><a href="#7-Javaweb-经典三层架构" class="headerlink" title="7. Javaweb 经典三层架构"></a>7. Javaweb 经典三层架构</h1><p>◇ Struts 项目中为避免所有的运算逻辑都放在 Action 导致 Action 类复用度低和逻辑混乱，通常让 action（仍属于 Servlet 范畴）只负责显示，与 JSP 共同组成表现层（web 层），独立出一层业务层（service 层）负责具体业务运算逻辑供 Action 调用，然后通过 JDBC 调用持久层完成数据库的读写的部分独立成数据访问层（dao 层）供业务层使用，由此形成了经典三层架构。<br>○ 业务层中不包含 JavaWeb API 而只关心业务逻辑，数据层只关心对数据库的访问细节而不涉及具体业务逻辑，提高了代码的可重用性。<br>○ MVC 定位为表现层的设计模式。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="F:\笔记\博客\文章图片\three_tier_architecture.png" alt="img"></p>
+<h1 id="8-Hibernate-框架"><a href="#8-Hibernate-框架" class="headerlink" title="8. Hibernate 框架"></a>8. Hibernate 框架</h1><p>◆ Hibernate 是个 ORM（Object Relational Mapping，即对象关系映射）框架，通过创建持久化类来对应数据库中表属性及关联关系，然后通过操作持久化对象就能达到操作数据库的目的，而不需要与 SQL 语句打交道，大大降低了原 JDBC 方式的编程量。<br>◆ Hibernate 原理是对 JDBC 进行了封装，并能自动生成 SQL 语句。</p>
+<h1 id="9-Spring-框架"><a href="#9-Spring-框架" class="headerlink" title="9. Spring 框架"></a>9. Spring 框架</h1><p>■ Spring 框架（Spring framwork，简称 Spring）是一个 JavaSE/EE 全栈开源框架，它从设计上就是分层分模块的架构，可以将对应模块功能的子框架整合到体系中。<br>■ Spring 带来的最显著改变：在 Spring 之前，web 层调用业务层、业务层调用持久层都是通过调用者 new 出被调用者的方式，之间强耦合、复用率低，Spring 通过其核心特性 IoC 实现强依赖的解耦，由 Spring 完成被调用者的 new 实例化并将其注入给依赖者。<br>● demo 地址：<a target="_blank" rel="noopener" href="https://github.com/congzhou09/spring_maven_demo">spring_maven_demo</a></p>
+<h1 id="10-SSH-Spring-Struts-Hibernate-框架"><a href="#10-SSH-Spring-Struts-Hibernate-框架" class="headerlink" title="10. SSH(Spring-Struts-Hibernate)框架"></a>10. SSH(Spring-Struts-Hibernate)框架</h1><p>● Spring 框架整合了 Struts 和 Hibernate，形成了 SSH 这个合成框架。<br>● SSH 框架中，Struts 负责表示层，Hibernate 负责持久层，Spring 通过 IoC 特性实现对业务层 JavaBean 的管理，以及对表示层与持久层的黏合。</p>
+<h1 id="11-SpringMVC"><a href="#11-SpringMVC" class="headerlink" title="11. SpringMVC"></a>11. SpringMVC</h1><p>● Spring 开发者逐渐发现 Struts 存在设计缺陷，会导致性能、安全、减少配置复杂度、开发效率等方面的不足，遂开发了自己的 MVC 框架：SpringMVC。<br>● SpringMVC 接受请求的入口是 DispatcherServlet ，不同于 Struts 基于 Servlet 的 Filter，它是派生自 HttpServlet 的一个 Servlet，请求会交付给对应的 Controller 做处理。<br>● SpringMVC 的因其更清晰的层级分离、更强大直接的配置等优势逐渐成为 Spring Web 模块的主流子框架。<br>● demo 地址：<a target="_blank" rel="noopener" href="https://github.com/congzhou09/spring_maven_demo">spring_maven_demo</a></p>
+<h1 id="12-SSM-Spring-SpringMVC-MyBatis-框架"><a href="#12-SSM-Spring-SpringMVC-MyBatis-框架" class="headerlink" title="12. SSM(Spring-SpringMVC-MyBatis)框架"></a>12. SSM(Spring-SpringMVC-MyBatis)框架</h1><p>△ SSM 框架分别用 SpringMVC 和 MyBatis 替代 SSH 框架中的 Struts 和 Hibernate，MyBatis 适用于数据源复杂度较低的场景。</p>
+<h1 id="13-SpringBoot"><a href="#13-SpringBoot" class="headerlink" title="13. SpringBoot"></a>13. SpringBoot</h1><p>● Spring Boot 是对 Spring 工作流层面的演进，实现基于 Spring 的更便捷的生产级别应用。<br>● Spring Boot 的优点：<br>（1）内嵌 Servlet 容器，独立运行的 Spring 项目，Spring Boot 可以内嵌 Tomcat，以 java -jar xx.jar 包的形式来运行一个 Spring Boot 应用，省略了 war 包部署的繁琐。<br>（2）提供 starter 机制简化 Maven 依赖管理与 Spring 配置，如仅需要引入“spring-boot-starter-web”就可以包含 Spring 和 SpringMVC 相关的依赖和配置。<br>● demo 地址：<a target="_blank" rel="noopener" href="https://github.com/congzhou09/springboot_maven_demo">springboot_maven_demo</a></p>
+<p><a target="_blank" rel="noopener" href="https://congzhou09.github.io/knowledge/Java-web-%E6%8A%80%E6%9C%AF%E4%B8%8E%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E5%8E%86%E5%8F%B2.html#Javaweb-%E7%BB%8F%E5%85%B8%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84">参考文章</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io">robotszx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://szx-zhao.github.io/2024/10/28/2024-06-12-Java%20web%20%E6%8A%80%E6%9C%AF%E4%B8%8E%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/">https://szx-zhao.github.io/2024/10/28/2024-06-12-Java%20web%20%E6%8A%80%E6%9C%AF%E4%B8%8E%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://szx-zhao.github.io" target="_blank">机器人之家</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaWeb/">JavaWeb</a></div><div class="post_share"><div class="social-share" data-image="/img/cover/3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/10/28/2024-06-24-GitLab%E9%83%A8%E7%BD%B2/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2024/10/28/2024-06-09-Google%20Search/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/10/28/2023-12-30-%E8%AE%A4%E8%AF%86JSON/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div><div><a href="/2024/10/28/2024-02-05-Java%20Web/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-28</div><div class="title"></div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Avatar/60910068.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">robotszx</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szx-zhao"><i class="fab fa-github"></i><span>前往未知的领域~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/szx-zhao" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1358861771@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Servlet"><span class="toc-number">1.</span> <span class="toc-text">1. Servlet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-JSP-Java-Server-Pages"><span class="toc-number">2.</span> <span class="toc-text">2. JSP(Java Server Pages)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-JSP-Model1-%E7%AC%AC%E4%B8%80%E4%BB%A3"><span class="toc-number">3.</span> <span class="toc-text">3. JSP Model1 第一代</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-JSP-Model1-%E7%AC%AC%E4%BA%8C%E4%BB%A3"><span class="toc-number">4.</span> <span class="toc-text">4. JSP Model1 第二代</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-JSP-Model2"><span class="toc-number">5.</span> <span class="toc-text">5. JSP Model2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Struts-%E6%A1%86%E6%9E%B6%EF%BC%88%E4%BB%A5-Struts2-%E4%B8%BA%E5%87%86%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">6. Struts 框架（以 Struts2 为准）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-Javaweb-%E7%BB%8F%E5%85%B8%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="toc-number">7.</span> <span class="toc-text">7. Javaweb 经典三层架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-Hibernate-%E6%A1%86%E6%9E%B6"><span class="toc-number">8.</span> <span class="toc-text">8. Hibernate 框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-Spring-%E6%A1%86%E6%9E%B6"><span class="toc-number">9.</span> <span class="toc-text">9. Spring 框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-SSH-Spring-Struts-Hibernate-%E6%A1%86%E6%9E%B6"><span class="toc-number">10.</span> <span class="toc-text">10. SSH(Spring-Struts-Hibernate)框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-SpringMVC"><span class="toc-number">11.</span> <span class="toc-text">11. SpringMVC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-SSM-Spring-SpringMVC-MyBatis-%E6%A1%86%E6%9E%B6"><span class="toc-number">12.</span> <span class="toc-text">12. SSM(Spring-SpringMVC-MyBatis)框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-SpringBoot"><span class="toc-number">13.</span> <span class="toc-text">13. SpringBoot</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-10-17-MySQL%E8%BF%90%E7%BB%B4%E8%84%9A%E6%9C%AC/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-10-17-MySQL%E8%BF%90%E7%BB%B4%E8%84%9A%E6%9C%AC/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.320Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-06-Mobx%E5%85%A5%E9%97%A8/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-06-Mobx%E5%85%A5%E9%97%A8/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-09-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-09-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-11-ping%E6%8E%A2%E6%B5%8B%E7%9A%84%E5%8E%86%E7%A8%8B/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-11-ping%E6%8E%A2%E6%B5%8B%E7%9A%84%E5%8E%86%E7%A8%8B/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/2024-09-10-Taro%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/10/28/2024-09-10-Taro%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" title="无题">无题</a><time datetime="2024-10-28T12:46:25.305Z" title="发表于 2024-10-28 20:46:25">2024-10-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By robotszx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
